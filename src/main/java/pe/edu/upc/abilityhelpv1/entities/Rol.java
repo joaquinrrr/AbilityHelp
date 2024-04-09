@@ -2,36 +2,54 @@ package pe.edu.upc.abilityhelpv1.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
-@Table(name = "Rol")
-public class Rol {
+@Table(name = "Rol", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "rol"})})
+public class Rol implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_rol;
-    @Column(name = "rol_name", nullable = false, length = 35)
-    private String name;
+    private Long idRol;
+    @Column(name = "rol", nullable = false, length = 35)
+    private String rol;
 
-    public Rol(){
+    //agregar el one to many para saber que rol esta asignado a cada usuario
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    }
-    public Rol(int id_rol, String name) {
-        this.id_rol = id_rol;
-        this.name = name;
-    }
-
-    public int getId_rol() {
-        return id_rol;
+    public Rol() {
     }
 
-    public String getName() {
-        return name;
+    public Rol(Long idRol, String rol, User user) {
+        this.idRol = idRol;
+        this.rol = rol;
+        this.user = user;
     }
 
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
+    public Long getIdRol() {
+        return idRol;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIdRol(Long idRol) {
+        this.idRol = idRol;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

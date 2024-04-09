@@ -4,8 +4,6 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upc.abilityhelpv1.entities.Type_Interaction;
-
 import pe.edu.upc.abilityhelpv1.repositories.IType_InteractionRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IType_InteractionServices;
 
@@ -19,12 +17,12 @@ public class Type_InteractionImplement implements IType_InteractionServices {
 
 
     @Override
-    public void insert(Type_Interaction type_Interaction) {
+    public void insert(TypeInteraction type_Interaction) {
         sR.save(type_Interaction);
     }
 
     @Override
-    public List<Type_Interaction> list() {
+    public List<TypeInteraction> list() {
        return sR.findAll();
     }
 }

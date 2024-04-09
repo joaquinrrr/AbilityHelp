@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Type_Interaction")
-public class Type_Interaction {
+public class TypeInteraction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,12 +14,12 @@ public class Type_Interaction {
     @Column (name = "type_interaction",nullable = true,length = 50)
     private String type_interaction;
 
-    public Type_Interaction(int id_type_interaction, String type_interaction){
+    public TypeInteraction(int id_type_interaction, String type_interaction){
         this.id_type_interaction=id_type_interaction;
         this.type_interaction=type_interaction;
     }
 
-    public Type_Interaction() {
+    public TypeInteraction() {
 
     }
 

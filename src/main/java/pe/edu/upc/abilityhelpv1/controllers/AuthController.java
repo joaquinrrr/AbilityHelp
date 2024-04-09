@@ -3,7 +3,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.AuthDTO;
-import pe.edu.upc.abilityhelpv1.entities.Auth;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IAuthServices;
 import java.util.List;
 import java.util.stream.Collectors;
