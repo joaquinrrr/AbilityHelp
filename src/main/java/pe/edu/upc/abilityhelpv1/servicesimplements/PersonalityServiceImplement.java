@@ -19,5 +19,9 @@ public class PersonalityServiceImplement implements IPersonalityServices {
     public List<Personalities> list() {
         return sR.findAll();
     }
+
+    @Override
+    public Personalities listId(int id) {return sR.findById(id).orElse(new Personalities());}
+
     public Personalities ListId(int id){return sR.findById(id).orElse(new Personalities());}
 }

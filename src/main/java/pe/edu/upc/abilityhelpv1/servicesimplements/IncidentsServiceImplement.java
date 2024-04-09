@@ -18,5 +18,6 @@ public class IncidentsServiceImplement implements IncidentServices{
     public List<Incidents> list() {
         return sR.findAll();
     }
-    public Incidents ListId(int id){return sR.findById(id).orElse(new Incidents());}
+    @Override
+    public Incidents listId(int id) {return sR.findById(id).orElse(new Incidents());}
 }
