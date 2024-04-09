@@ -11,7 +11,7 @@ public interface IScheduleServices {
     public void insert(Schedule schedule);
     public List<Schedule> list();
     public void delete(int id);
-    //public List<Schedule> findByWeekDay(LocalDate weekDay);
+    public List<Schedule> findByWeekDay(LocalDate weekDay);
 
 
 }

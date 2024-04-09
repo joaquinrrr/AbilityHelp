@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.entities;
 
 import jakarta.persistence.*;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -11,57 +12,57 @@ import java.util.Date;
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_schedule;
+    private int idSchedule;
 
-    @Column(name = "week_day", nullable = false)
-    private LocalDate  week_day;
+    @Column(name = "weekDay", nullable = false) //NO PONER GUIONES AL MOMENTO DE HACER EL TRABAJO
+    private LocalDate  weekDay;
 
-    @Column(name = "start_hour", nullable = false)
-    private LocalDateTime start_hour;
+    @Column(name = "startHour", nullable = false)
+    private Time startHour;
 
-    @Column(name = "finish_hour", nullable = false)
-    private LocalDateTime finish_hour;
+    @Column(name = "finishHour", nullable = false)
+    private Time finishHour;
 
     public Schedule(){
 
     }
 
-    public Schedule(int id_schedule, LocalDate  week_day, LocalDateTime start_hour, LocalDateTime finish_hour) {
-        this.id_schedule = id_schedule;
-        this.week_day = week_day;
-        this.start_hour = start_hour;
-        this.finish_hour = finish_hour;
+    public Schedule(int idSchedule, LocalDate weekDay, Time startHour, Time finishHour) {
+        this.idSchedule = idSchedule;
+        this.weekDay = weekDay;
+        this.startHour = startHour;
+        this.finishHour = finishHour;
     }
 
-    public int getId_schedule() {
-        return id_schedule;
+    public int getIdSchedule() {
+        return idSchedule;
     }
 
-    public void setId_schedule(int id_schedule) {
-        this.id_schedule = id_schedule;
+    public void setIdSchedule(int idSchedule) {
+        this.idSchedule = idSchedule;
     }
 
-    public LocalDate  getWeek_day() {
-        return week_day;
+    public LocalDate getWeekDay() {
+        return weekDay;
     }
 
-    public void setWeek_day(LocalDate  week_day) {
-        this.week_day = week_day;
+    public void setWeekDay(LocalDate weekDay) {
+        this.weekDay = weekDay;
     }
 
-    public LocalDateTime getStart_hour() {
-        return start_hour;
+    public Time getStartHour() {
+        return startHour;
     }
 
-    public void setStart_hour(LocalDateTime start_hour) {
-        this.start_hour = start_hour;
+    public void setStartHour(Time startHour) {
+        this.startHour = startHour;
     }
 
-    public LocalDateTime getFinish_hour() {
-        return finish_hour;
+    public Time getFinishHour() {
+        return finishHour;
     }
 
-    public void setFinish_hour(LocalDateTime finish_hour) {
-        this.finish_hour = finish_hour;
+    public void setFinishHour(Time finishHour) {
+        this.finishHour = finishHour;
     }
 }

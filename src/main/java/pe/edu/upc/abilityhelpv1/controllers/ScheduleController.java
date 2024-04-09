@@ -39,9 +39,11 @@ public class ScheduleController {
         sS.delete(id);
     }
 
-    /*@GetMapping("/busqueda")
-    @ApiOperation(value = "Get schedules by week day", notes = "Returns a list of schedules for the specified week day")
-    public List<Schedule> buscarFecha(@RequestParam LocalDate weekDay) {
-        return sS.findByWeekDay(weekDay);
-    } */
+    @GetMapping("/busqueda") //listar
+    public List<ScheduleDTO> buscarmoedlo(@RequestParam LocalDate weekDay){
+        return sS.findByWeekDay(weekDay).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y, ScheduleDTO.class); //expresion lambda para la transformacion
+        }).collect(Collectors.toList()); //lista de tipo Shoe
+    }
 }

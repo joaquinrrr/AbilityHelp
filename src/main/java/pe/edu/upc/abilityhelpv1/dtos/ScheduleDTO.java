@@ -1,44 +1,50 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ScheduleDTO {
-    private int id_schedule;
-    private LocalDate  week_day;
-    private LocalDateTime start_hour;
-    private LocalDateTime finish_hour;
+    private int idSchedule;
+    private LocalDate  weekDay;
+    private Time startHour;
+    private Time finishHour;
 
-    public int getId_schedule() {
-        return id_schedule;
+    public int getIdSchedule() {
+        return idSchedule;
     }
 
-    public void setId_schedule(int id_schedule) {
-        this.id_schedule = id_schedule;
+    public void setIdSchedule(int idSchedule) {
+        this.idSchedule = idSchedule;
     }
 
-    public LocalDate  getWeek_day() {
-        return week_day;
+    public LocalDate getWeekDay() {
+        return weekDay;
     }
 
-    public void setWeek_day(LocalDate  week_day) {
-        this.week_day = week_day;
+    public void setWeekDay(LocalDate weekDay) {
+        this.weekDay = weekDay;
     }
 
-    public LocalDateTime getStart_hour() {
-        return start_hour;
+    public Time getStartHour() {
+        return startHour;
     }
 
-    public void setStart_hour(LocalDateTime start_hour) {
-        this.start_hour = start_hour;
+    public void setStartHour(Time startHour) {
+        this.startHour = startHour;
     }
 
-    public LocalDateTime getFinish_hour() {
-        return finish_hour;
+    public Time getFinishHour() {
+        return finishHour;
     }
 
-    public void setFinish_hour(LocalDateTime finish_hour) {
-        this.finish_hour = finish_hour;
+    public void setFinishHour(Time finishHour) {
+        this.finishHour = finishHour;
     }
 }

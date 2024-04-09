@@ -26,9 +26,9 @@ public class ScheduleServiceImplement implements IScheduleServices {
         sR.deleteById(id);
     }
 
-    /*@Override
+    @Override
     public List<Schedule> findByWeekDay(LocalDate weekDay) {
         return sR.findByWeekDay(weekDay);
-    }*/
+    }
 
 }

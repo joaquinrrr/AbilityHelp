@@ -8,5 +8,5 @@ import java.time.LocalDate;
 import java.util.List;
 @Repository
 public interface IScheduleRepository extends JpaRepository<Schedule,Integer>  {
-    //public List<Schedule> findByWeekDay(LocalDate weekDay);
+    public List<Schedule> findByWeekDay(LocalDate weekDay);
 }
