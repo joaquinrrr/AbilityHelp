@@ -2,10 +2,11 @@ package pe.edu.upc.abilityhelpv1.dtos;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class ScheduleDTO {
     private int id_schedule;
-    private LocalDate week_day;
+    private LocalDate  week_day;
     private LocalDateTime start_hour;
     private LocalDateTime finish_hour;
 
@@ -17,11 +18,11 @@ public class ScheduleDTO {
         this.id_schedule = id_schedule;
     }
 
-    public LocalDate getWeek_day() {
+    public LocalDate  getWeek_day() {
         return week_day;
     }
 
-    public void setWeek_day(LocalDate week_day) {
+    public void setWeek_day(LocalDate  week_day) {
         this.week_day = week_day;
     }
 

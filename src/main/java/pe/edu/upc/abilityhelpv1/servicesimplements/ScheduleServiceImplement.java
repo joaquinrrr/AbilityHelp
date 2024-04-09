@@ -5,6 +5,7 @@ import pe.edu.upc.abilityhelpv1.entities.Schedule;
 import pe.edu.upc.abilityhelpv1.repositories.IScheduleRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IScheduleServices;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class ScheduleServiceImplement implements IScheduleServices {
@@ -24,5 +25,10 @@ public class ScheduleServiceImplement implements IScheduleServices {
     public void delete(int id) {
         sR.deleteById(id);
     }
+
+    /*@Override
+    public List<Schedule> findByWeekDay(LocalDate weekDay) {
+        return sR.findByWeekDay(weekDay);
+    }*/
 
 }
