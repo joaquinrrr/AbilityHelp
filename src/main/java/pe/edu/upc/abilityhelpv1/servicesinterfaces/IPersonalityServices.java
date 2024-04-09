@@ -6,4 +6,5 @@ import java.util.List;
 public interface IPersonalityServices {
     public void insert(Personalities personalities);
     public List<Personalities> list();
+    public void delete(int id);
 }

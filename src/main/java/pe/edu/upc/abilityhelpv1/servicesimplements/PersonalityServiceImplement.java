@@ -19,4 +19,9 @@ public class PersonalityServiceImplement implements IPersonalityServices {
     public List<Personalities> list() {
         return sR.findAll();
     }
+
+    @Override
+    public void delete(int id) {
+        sR.deleteById(id);;
+    }
 }

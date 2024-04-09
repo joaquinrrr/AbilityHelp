@@ -7,32 +7,35 @@ import jakarta.persistence.*;
 public class Personalities {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_personality;
-    @Column(name = "name_personality", nullable = false, length = 35)
-    private String name_personality;
+    private int idPersonality;
+    @Column(name = "namePersonality", nullable = false, length = 35)
+    private String namePersonality;
     @Column(name = "description", nullable = false, length = 35)
     private String description;
 
-    public Personalities(int id_personality, String name_personality, String description) {
-        this.id_personality = id_personality;
-        this.name_personality = name_personality;
+    public Personalities() {
+    }
+
+    public Personalities(int idPersonality, String namePersonality, String description) {
+        this.idPersonality = idPersonality;
+        this.namePersonality = namePersonality;
         this.description = description;
     }
 
-    public int getId_personality() {
-        return id_personality;
+    public int getIdPersonality() {
+        return idPersonality;
     }
 
-    public void setId_personality(int id_personality) {
-        this.id_personality = id_personality;
+    public void setIdPersonality(int idPersonality) {
+        this.idPersonality = idPersonality;
     }
 
-    public String getName_personality() {
-        return name_personality;
+    public String getNamePersonality() {
+        return namePersonality;
     }
 
-    public void setName_personality(String name_personality) {
-        this.name_personality = name_personality;
+    public void setNamePersonality(String namePersonality) {
+        this.namePersonality = namePersonality;
     }
 
     public String getDescription() {

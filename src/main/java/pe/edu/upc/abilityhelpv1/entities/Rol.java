@@ -7,28 +7,29 @@ import jakarta.persistence.*;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_rol;
-    @Column(name = "rol_name", nullable = false, length = 35)
+    private int idRol;
+    @Column(name = "rolName", nullable = false, length = 35)
     private String name;
 
     public Rol(){
 
     }
-    public Rol(int id_rol, String name) {
-        this.id_rol = id_rol;
+
+    public Rol(int idRol, String name) {
+        this.idRol = idRol;
         this.name = name;
     }
 
-    public int getId_rol() {
-        return id_rol;
+    public int getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
     }
 
     public void setName(String name) {
