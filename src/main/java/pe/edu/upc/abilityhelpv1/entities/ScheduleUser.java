@@ -21,15 +21,15 @@ public class ScheduleUser {
 
     @ManyToOne
     @JoinColumn(name="scheduleId")
-    private Schedule iSchedule;
+    private Schedule idSchedule;
 
     public ScheduleUser() {
     }
 
-    public ScheduleUser(int idUserSchedule, User idUser, Schedule iSchedule) {
+    public ScheduleUser(int idUserSchedule, User idUser, Schedule idSchedule) {
         this.idUserSchedule = idUserSchedule;
         this.idUser = idUser;
-        this.iSchedule = iSchedule;
+        this.idSchedule = idSchedule;
     }
 
     public int getIdUserSchedule() {
@@ -49,11 +49,11 @@ public class ScheduleUser {
     }
 
     public Schedule getiSchedule() {
-        return iSchedule;
+        return idSchedule;
     }
 
-    public void setiSchedule(Schedule iSchedule) {
-        this.iSchedule = iSchedule;
+    public void setiSchedule(Schedule idSchedule) {
+        this.idSchedule = idSchedule;
     }
 
     
