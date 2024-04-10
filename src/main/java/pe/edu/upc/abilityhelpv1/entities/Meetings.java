@@ -24,6 +24,38 @@ public class Meetings {
     @JoinColumn(name = "coachId")
     private User idCoach;
 
-    
+    public Meetings(){
+        
+    }
+
+    public Meetings(int idMeet, User idUserSchedule, User idCoach) {
+        this.idMeet = idMeet;
+        this.idUserSchedule = idUserSchedule;
+        this.idCoach = idCoach;
+    }
+
+    public int getIdMeet() {
+        return idMeet;
+    }
+
+    public void setIdMeet(int idMeet) {
+        this.idMeet = idMeet;
+    }
+
+    public User getIdUserSchedule() {
+        return idUserSchedule;
+    }
+
+    public void setIdUserSchedule(User idUserSchedule) {
+        this.idUserSchedule = idUserSchedule;
+    }
+
+    public User getIdCoach() {
+        return idCoach;
+    }
+
+    public void setIdCoach(User idCoach) {
+        this.idCoach = idCoach;
+    }
 
 }
