@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@Api(tags = "Schedule Management")
 @RequestMapping("/Schedule")
 public class ScheduleController {
     @Autowired
