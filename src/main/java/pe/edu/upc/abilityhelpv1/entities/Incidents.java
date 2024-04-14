@@ -24,6 +24,10 @@ public class Incidents {
         this.date_incident = date_incident;
     }
 
+    public Incidents() {
+
+    }
+
     public int getId_incident() {
         return id_incident;
     }
