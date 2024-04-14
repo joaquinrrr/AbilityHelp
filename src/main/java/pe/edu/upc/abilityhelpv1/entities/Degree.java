@@ -3,7 +3,7 @@ package pe.edu.upc.abilityhelpv1.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "Carrera")
+@Table(name = "Carrera")
 public class Degree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,7 +11,8 @@ public class Degree {
     @Column(name = "carrera_name", nullable = false, length = 35)
     private String nombre_carrera;
 
-    public Degree(){}
+    public Degree() {
+    }
 
     public Degree(int id_carrera, String nombre_carrera) {
         this.id_carrera = id_carrera;

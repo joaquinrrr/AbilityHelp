@@ -13,6 +13,7 @@ public class DegreeServiceImplement implements IDegreeServices {
 
     @Autowired
     private IDegreeRepository sR;
+
     @Override
     public void insert(Degree degree) {
         sR.save(degree);

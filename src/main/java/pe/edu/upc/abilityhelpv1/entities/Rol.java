@@ -11,9 +11,10 @@ public class Rol {
     @Column(name = "rol_name", nullable = false, length = 35)
     private String name;
 
-    public Rol(){
+    public Rol() {
 
     }
+
     public Rol(int id_rol, String name) {
         this.id_rol = id_rol;
         this.name = name;
