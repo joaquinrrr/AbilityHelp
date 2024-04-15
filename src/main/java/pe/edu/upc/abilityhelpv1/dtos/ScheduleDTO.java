@@ -4,17 +4,18 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import pe.edu.upc.abilityhelpv1.entities.User;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 public class ScheduleDTO {
     private int idSchedule;
     private LocalDate  weekDay;
-    private Time startHour;
-    private Time finishHour;
+    private LocalTime  startHour;
+    private LocalTime finishHour;
+    private User coachUser;
 
     public int getIdSchedule() {
         return idSchedule;
@@ -32,19 +33,27 @@ public class ScheduleDTO {
         this.weekDay = weekDay;
     }
 
-    public Time getStartHour() {
+    public LocalTime getStartHour() {
         return startHour;
     }
 
-    public void setStartHour(Time startHour) {
+    public void setStartHour(LocalTime startHour) {
         this.startHour = startHour;
     }
 
-    public Time getFinishHour() {
+    public LocalTime getFinishHour() {
         return finishHour;
     }
 
-    public void setFinishHour(Time finishHour) {
+    public void setFinishHour(LocalTime finishHour) {
         this.finishHour = finishHour;
+    }
+
+    public User getCoachUser() {
+        return coachUser;
+    }
+
+    public void setCoachUser(User coachUser) {
+        this.coachUser = coachUser;
     }
 }

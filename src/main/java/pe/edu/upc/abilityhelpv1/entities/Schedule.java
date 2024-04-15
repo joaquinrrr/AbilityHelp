@@ -1,11 +1,10 @@
 package pe.edu.upc.abilityhelpv1.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "Schedule")
@@ -18,20 +17,25 @@ public class Schedule {
     private LocalDate  weekDay;
 
     @Column(name = "startHour", nullable = false)
-    private Time startHour;
+    private LocalTime startHour;
 
     @Column(name = "finishHour", nullable = false)
-    private Time finishHour;
+    private LocalTime finishHour;
+
+    @ManyToOne
+    @JoinColumn(name="coachId")
+    private User userCoach;
 
     public Schedule(){
 
     }
 
-    public Schedule(int idSchedule, LocalDate weekDay, Time startHour, Time finishHour) {
+    public Schedule(int idSchedule, LocalDate weekDay, LocalTime startHour, LocalTime finishHour, User userCoach) {
         this.idSchedule = idSchedule;
         this.weekDay = weekDay;
         this.startHour = startHour;
         this.finishHour = finishHour;
+        this.userCoach = userCoach;
     }
 
     public int getIdSchedule() {
@@ -50,19 +54,27 @@ public class Schedule {
         this.weekDay = weekDay;
     }
 
-    public Time getStartHour() {
+    public LocalTime getStartHour() {
         return startHour;
     }
 
-    public void setStartHour(Time startHour) {
+    public void setStartHour(LocalTime startHour) {
         this.startHour = startHour;
     }
 
-    public Time getFinishHour() {
+    public LocalTime getFinishHour() {
         return finishHour;
     }
 
-    public void setFinishHour(Time finishHour) {
+    public void setFinishHour(LocalTime finishHour) {
         this.finishHour = finishHour;
+    }
+
+    public User getUserCoach() {
+        return userCoach;
+    }
+
+    public void setUserCoach(User userCoach) {
+        this.userCoach = userCoach;
     }
 }
