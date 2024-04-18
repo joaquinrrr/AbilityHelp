@@ -12,12 +12,17 @@ public class Gender {
     @Column(name = "nameGender", nullable = false, length = 10)
     private String nameGender;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public Gender() {
     }
 
-    public Gender(int idGender, String nameGender) {
+    public Gender(int idGender, String nameGender, User user) {
         this.idGender = idGender;
         this.nameGender = nameGender;
+        this.user = user;
     }
 
     public int getIdGender() {
@@ -34,5 +39,13 @@ public class Gender {
 
     public void setNameGender(String nameGender) {
         this.nameGender = nameGender;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

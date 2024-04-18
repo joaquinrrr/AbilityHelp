@@ -25,4 +25,5 @@ public class UserServiceImplement implements IUserServices {
     public void delete(int id) {
         sR.deleteById(id);
     }
+
 }

@@ -1,8 +1,7 @@
 package pe.edu.upc.abilityhelpv1.controllers;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.ScheduleDTO;
 import pe.edu.upc.abilityhelpv1.entities.Schedule;
@@ -26,6 +25,7 @@ public class ScheduleController {
     }
 
     @GetMapping //listar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')") //manejar la auth de USER
     public List<ScheduleDTO> list(){
         return sS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();

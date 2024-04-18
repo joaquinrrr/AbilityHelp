@@ -4,11 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import pe.edu.upc.abilityhelpv1.entities.User;
 
 public class PersonalitiesDTO {
     private int idPersonality;
     private String namePersonality;
     private String description;
+    private User user;
 
     public int getIdPersonality() {
         return idPersonality;
@@ -32,5 +34,13 @@ public class PersonalitiesDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

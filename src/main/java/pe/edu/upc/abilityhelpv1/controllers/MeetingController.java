@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.DegreeDTO;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingDTO;
@@ -25,6 +26,7 @@ public class MeetingController {
     }
 
     @GetMapping //listar
+    @PreAuthorize("hasAuthority('USER')") //manejar la auth de USER
     public List<MeetingDTO> list(){
         return mS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();

@@ -2,47 +2,38 @@ package pe.edu.upc.abilityhelpv1.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "User-help")
+@Table(name = "UserTable")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
-    @Column(name = "nameUser", nullable = false, length = 35)
-    private String nameUser;
-    @Column(name = "emailUser", nullable = false, length = 35)
+    @Column(name = "username", nullable = false, length = 35)
+    private String username;
+    @Column(name = "email", nullable = false, length = 35)
     private String emailUser;
-    @Column(name = "passwordUser", nullable = false, length = 35)
-    private String passwordUser;
-    @Column(name = "ageUser", nullable = false, length = 2)
+    @Column(name = "password", nullable = false, length = 200)
+    private String password;
+    @Column(name = "age", nullable = false, length = 2)
     private int ageUser;
-
-    @ManyToOne
-    @JoinColumn(name="personalityid")
-    private Personalities personalities;
-    @ManyToOne
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="rolid")
-    private Rol rol;
-    @ManyToOne
-    @JoinColumn(name="genderid")
-    private Gender gender;
-    @ManyToOne
-    @JoinColumn(name="degreeid")
-    private Degree degree;
+    private List<Rol> rol;
+    private Boolean enabled;
 
     public User() {
     }
 
-    public User(int idUser, String nameUser, String emailUser, String passwordUser, int ageUser, Personalities personalities, Rol rol, Gender gender, Degree degree) {
+    public User(int idUser, String username, String emailUser, String password, int ageUser, List<Rol> rol, Boolean enabled) {
         this.idUser = idUser;
-        this.nameUser = nameUser;
+        this.username = username;
         this.emailUser = emailUser;
-        this.passwordUser = passwordUser;
+        this.password = password;
         this.ageUser = ageUser;
-        this.personalities = personalities;
         this.rol = rol;
-        this.gender = gender;
-        this.degree = degree;
+        this.enabled = enabled;
     }
 
     public int getIdUser() {
@@ -53,12 +44,12 @@ public class User {
         this.idUser = idUser;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmailUser() {
@@ -69,12 +60,12 @@ public class User {
         this.emailUser = emailUser;
     }
 
-    public String getPasswordUser() {
-        return passwordUser;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordUser(String passwordUser) {
-        this.passwordUser = passwordUser;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getAgeUser() {
@@ -85,35 +76,19 @@ public class User {
         this.ageUser = ageUser;
     }
 
-    public Personalities getPersonalities() {
-        return personalities;
-    }
-
-    public void setPersonalities(Personalities personalities) {
-        this.personalities = personalities;
-    }
-
-    public Rol getRol() {
+    public List<Rol> getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(List<Rol> rol) {
         this.rol = rol;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public Degree getDegree() {
-        return degree;
-    }
-
-    public void setDegree(Degree degree) {
-        this.degree = degree;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

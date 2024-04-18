@@ -11,13 +11,16 @@ public class Degree {
 
     @Column(name = "nameDegree", nullable = false, length = 35)
     private String nameDegree;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     public Degree() {
     }
 
-    public Degree(int idCarrera, String nameDegree) {
+    public Degree(int idCarrera, String nameDegree, User user) {
         this.idCarrera = idCarrera;
         this.nameDegree = nameDegree;
+        this.user = user;
     }
 
     public int getIdCarrera() {
@@ -34,5 +37,13 @@ public class Degree {
 
     public void setNameDegree(String nameDegree) {
         this.nameDegree = nameDegree;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

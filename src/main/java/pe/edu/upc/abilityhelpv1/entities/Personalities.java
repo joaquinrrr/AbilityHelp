@@ -12,14 +12,17 @@ public class Personalities {
     private String namePersonality;
     @Column(name = "description", nullable = false, length = 35)
     private String description;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     public Personalities() {
     }
 
-    public Personalities(int idPersonality, String namePersonality, String description) {
+    public Personalities(int idPersonality, String namePersonality, String description, User user) {
         this.idPersonality = idPersonality;
         this.namePersonality = namePersonality;
         this.description = description;
+        this.user = user;
     }
 
     public int getIdPersonality() {
@@ -44,5 +47,13 @@ public class Personalities {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

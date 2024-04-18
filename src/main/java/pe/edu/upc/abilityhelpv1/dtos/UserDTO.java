@@ -6,16 +6,15 @@ import pe.edu.upc.abilityhelpv1.entities.Gender;
 import pe.edu.upc.abilityhelpv1.entities.Personalities;
 import pe.edu.upc.abilityhelpv1.entities.Rol;
 
+import java.util.List;
+
 public class UserDTO {
     private int idUser;
-    private String nameUser;
+    private String username;
     private String emailUser;
-    private String passwordUser;
+    private String password;
     private int ageUser;
-    private Personalities personalities;
-    private Rol rol;
-    private Gender gender;
-    private Degree degree;
+    private Boolean enabled;
 
     public int getIdUser() {
         return idUser;
@@ -25,12 +24,12 @@ public class UserDTO {
         this.idUser = idUser;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmailUser() {
@@ -41,12 +40,12 @@ public class UserDTO {
         this.emailUser = emailUser;
     }
 
-    public String getPasswordUser() {
-        return passwordUser;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordUser(String passwordUser) {
-        this.passwordUser = passwordUser;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getAgeUser() {
@@ -57,35 +56,11 @@ public class UserDTO {
         this.ageUser = ageUser;
     }
 
-    public Personalities getPersonalities() {
-        return personalities;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setPersonalities(Personalities personalities) {
-        this.personalities = personalities;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public Degree getDegree() {
-        return degree;
-    }
-
-    public void setDegree(Degree degree) {
-        this.degree = degree;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

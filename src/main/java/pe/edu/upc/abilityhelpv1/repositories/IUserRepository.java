@@ -6,4 +6,7 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Integer> {
+
+    public User findByUsername(String nameUser);
+
 }
