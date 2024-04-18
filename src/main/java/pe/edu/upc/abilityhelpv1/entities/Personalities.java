@@ -19,6 +19,10 @@ public class Personalities {
         this.description = description;
     }
 
+    public Personalities() {
+
+    }
+
     public int getId_personality() {
         return id_personality;
     }

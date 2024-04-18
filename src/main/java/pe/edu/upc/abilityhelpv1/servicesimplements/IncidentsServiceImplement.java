@@ -14,9 +14,10 @@ public class IncidentsServiceImplement implements IncidentServices{
     public void insert(Incidents incidents) {
         sR.save(incidents);
     }
-
     @Override
     public List<Incidents> list() {
         return sR.findAll();
     }
+    @Override
+    public Incidents listId(int id) {return sR.findById(id).orElse(new Incidents());}
 }
