@@ -22,5 +22,5 @@ public interface IMeetRepository extends JpaRepository<Meeting, Integer> {
             "inner join schedule as sc ON sc.id_schedule = me.id_schedule \n" +
             "where us.username =:name and sc.week_day =:date \n" +
             "group by us.username, sc.week_day, sc.start_hour, sc.finish_hour", nativeQuery = true)
-    public List<String[]> meetingPerUserDate(@Param("name") String name, @Param("date") LocalDate date);
+    public List<String[]> meetingPerUserDate(@Param("date") LocalDate date);
 }

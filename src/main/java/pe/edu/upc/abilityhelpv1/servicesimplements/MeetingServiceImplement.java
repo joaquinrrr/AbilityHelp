@@ -38,7 +38,7 @@ public class MeetingServiceImplement implements IMeetServices {
     }
 
     @Override
-    public List<String[]> meetingPerUserDate(String name, LocalDate date) {
-        return sR.meetingPerUserDate(name, date);
+    public List<String[]> meetingPerUserDate(LocalDate date) {
+        return sR.meetingPerUserDate(date);
     }
 }

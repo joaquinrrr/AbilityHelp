@@ -60,8 +60,8 @@ public class MeetingController {
         return dtoLista;
     }
     @GetMapping("/reunionporUsuarioyFecha")
-    public List<MeetingPerUserDateDTO> reunionporUsuarioyFecha(@RequestParam String name, @RequestParam LocalDate date){
-        List<String[]> filaLista = mS.meetingPerUserDate(name,date);
+    public List<MeetingPerUserDateDTO> reunionporUsuarioyFecha(@RequestParam LocalDate date){
+        List<String[]> filaLista = mS.meetingPerUserDate(date);
         List<MeetingPerUserDateDTO> dtoLista = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
         for(String[] columna: filaLista){

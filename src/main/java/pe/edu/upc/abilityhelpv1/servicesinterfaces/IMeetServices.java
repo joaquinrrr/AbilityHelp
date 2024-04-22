@@ -14,6 +14,6 @@ public interface IMeetServices {
     public void delete(int id);
     public void update(Meeting meeting);
     public List<String[]> QuantityMeetPerCoach(String name);
-    public List<String[]> meetingPerUserDate(String name, LocalDate date);
+    public List<String[]> meetingPerUserDate(LocalDate date);
 
 }
