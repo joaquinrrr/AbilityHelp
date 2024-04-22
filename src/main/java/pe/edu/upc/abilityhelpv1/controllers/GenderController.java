@@ -29,6 +29,13 @@ public class GenderController {
             return m.map(y, GenderDTO.class); //expresion lambda para la transformacion
         }).collect(Collectors.toList()); //lista de tipo Shoe
     }
+    @PutMapping("/{id}") // actualizar
+    public void actualizar(@PathVariable("id") Integer id, @RequestBody GenderDTO g){
+        ModelMapper m = new ModelMapper();
+        Gender gh = m.map(g, Gender.class);
+        gh.setIdGender(id); // asegurarse de que el objeto tenga el mismo ID que el proporcionado en la URL
+        sS.update(gh);
+    }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
     public void eliminar(@PathVariable("id") Integer id){

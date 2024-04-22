@@ -24,4 +24,14 @@ public class PersonalityServiceImplement implements IPersonalityServices {
     public void delete(int id) {
         sR.deleteById(id);;
     }
+
+    @Override
+    public void update(Personalities personalities) {
+        sR.save(personalities);
+    }
+
+    @Override
+    public List<String[]> quantityUserPerPersonality(String name) {
+        return sR.quantityUserPerPersonality(name);
+    }
 }

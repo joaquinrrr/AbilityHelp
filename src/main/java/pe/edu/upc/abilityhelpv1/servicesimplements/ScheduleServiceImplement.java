@@ -31,4 +31,9 @@ public class ScheduleServiceImplement implements IScheduleServices {
         return sR.findByWeekDay(weekDay);
     }
 
+    @Override
+    public void update(Schedule schedule) {
+        sR.save(schedule);
+    }
+
 }

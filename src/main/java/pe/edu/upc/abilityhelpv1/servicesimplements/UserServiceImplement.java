@@ -25,5 +25,17 @@ public class UserServiceImplement implements IUserServices {
     public void delete(int id) {
         sR.deleteById(id);
     }
+    @Override
+    public User listarId(int idUsuario) {
+        return sR.findById(idUsuario).orElse(new User());
+    }
+    @Override
+    public void update(User user) {
+        sR.save(user);
+    }
 
+    @Override
+    public List<String[]> quantityPersonalityPerCarrer() {
+        return sR.quantityPersonalityPerCarrer();
+    }
 }

@@ -24,4 +24,13 @@ public class RolServiceImplement implements IRolServices {
     public void delete(int id) {
         sR.deleteById(id);
     }
+    @Override
+    public Rol listarId(int idRol) {
+        return sR.findById(idRol).orElse(new Rol());
+    }
+
+    @Override
+    public void update(Rol rol) {
+        sR.save(rol);
+    }
 }

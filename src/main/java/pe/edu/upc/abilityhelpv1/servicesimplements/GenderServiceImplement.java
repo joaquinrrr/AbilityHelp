@@ -25,4 +25,9 @@ public class GenderServiceImplement implements IGenderServices {
     public void delete(int id) {
         sR.deleteById(id);
     }
+
+    @Override
+    public void update(Gender gender) {
+        sR.save(gender);
+    }
 }

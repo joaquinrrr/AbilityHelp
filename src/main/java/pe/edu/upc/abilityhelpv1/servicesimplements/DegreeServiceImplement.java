@@ -27,4 +27,14 @@ public class DegreeServiceImplement implements IDegreeServices {
     public void delete(int id) {
         sR.deleteById(id);
     }
+
+    @Override
+    public void update(Degree degree) {
+        sR.save(degree);
+    }
+
+    @Override
+    public List<String[]> quantityUserByCarrer() {
+        return sR.quantityUserByCarrer();
+    }
 }

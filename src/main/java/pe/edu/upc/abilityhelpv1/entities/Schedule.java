@@ -1,10 +1,16 @@
 package pe.edu.upc.abilityhelpv1.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import jakarta.persistence.*;
 
-import java.time.LocalTime;
+import java.sql.Time;
+import java.time.Clock;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Schedule")
@@ -17,10 +23,10 @@ public class Schedule {
     private LocalDate  weekDay;
 
     @Column(name = "startHour", nullable = false)
-    private LocalTime startHour;
+    private LocalDateTime startHour;
 
     @Column(name = "finishHour", nullable = false)
-    private LocalTime finishHour;
+    private LocalDateTime finishHour;
 
     @ManyToOne
     @JoinColumn(name="coachId")
@@ -30,7 +36,7 @@ public class Schedule {
 
     }
 
-    public Schedule(int idSchedule, LocalDate weekDay, LocalTime startHour, LocalTime finishHour, User userCoach) {
+    public Schedule(int idSchedule, LocalDate weekDay, LocalDateTime startHour, LocalDateTime finishHour, User userCoach) {
         this.idSchedule = idSchedule;
         this.weekDay = weekDay;
         this.startHour = startHour;
@@ -54,19 +60,19 @@ public class Schedule {
         this.weekDay = weekDay;
     }
 
-    public LocalTime getStartHour() {
+    public LocalDateTime getStartHour() {
         return startHour;
     }
 
-    public void setStartHour(LocalTime startHour) {
+    public void setStartHour(LocalDateTime startHour) {
         this.startHour = startHour;
     }
 
-    public LocalTime getFinishHour() {
+    public LocalDateTime getFinishHour() {
         return finishHour;
     }
 
-    public void setFinishHour(LocalTime finishHour) {
+    public void setFinishHour(LocalDateTime finishHour) {
         this.finishHour = finishHour;
     }
 

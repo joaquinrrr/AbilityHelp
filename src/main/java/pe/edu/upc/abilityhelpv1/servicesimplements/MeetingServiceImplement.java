@@ -6,6 +6,7 @@ import pe.edu.upc.abilityhelpv1.entities.Meeting;
 import pe.edu.upc.abilityhelpv1.repositories.IMeetRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class MeetingServiceImplement implements IMeetServices {
@@ -24,5 +25,20 @@ public class MeetingServiceImplement implements IMeetServices {
     @Override
     public void delete(int id) {
         sR.deleteById(id);
+    }
+
+    @Override
+    public void update(Meeting meeting) {
+        sR.save(meeting);
+    }
+
+    @Override
+    public List<String[]> QuantityMeetPerCoach(String name) {
+        return sR.QuantityMeetPerCoach(name);
+    }
+
+    @Override
+    public List<String[]> meetingPerUserDate(String name, LocalDate date) {
+        return sR.meetingPerUserDate(name, date);
     }
 }

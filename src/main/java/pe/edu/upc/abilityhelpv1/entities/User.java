@@ -1,15 +1,18 @@
 package pe.edu.upc.abilityhelpv1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import javax.management.relation.Role;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "UserTable")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Long idUser;
     @Column(name = "username", nullable = false, length = 35)
     private String username;
     @Column(name = "email", nullable = false, length = 35)
@@ -18,29 +21,18 @@ public class User {
     private String password;
     @Column(name = "age", nullable = false, length = 2)
     private int ageUser;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="rolid")
-    private List<Rol> rol;
     private Boolean enabled;
+    // En User.java
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    @JsonIgnore
+    private List<Rol> rol;
 
-    public User() {
-    }
-
-    public User(int idUser, String username, String emailUser, String password, int ageUser, List<Rol> rol, Boolean enabled) {
-        this.idUser = idUser;
-        this.username = username;
-        this.emailUser = emailUser;
-        this.password = password;
-        this.ageUser = ageUser;
-        this.rol = rol;
-        this.enabled = enabled;
-    }
-
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -76,19 +68,19 @@ public class User {
         this.ageUser = ageUser;
     }
 
-    public List<Rol> getRol() {
-        return rol;
-    }
-
-    public void setRol(List<Rol> rol) {
-        this.rol = rol;
-    }
-
     public Boolean getEnabled() {
         return enabled;
     }
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Rol> getRol() {
+        return rol;
+    }
+
+    public void setRol(List<Rol> rol) {
+        this.rol = rol;
     }
 }

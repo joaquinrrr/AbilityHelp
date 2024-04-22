@@ -1,5 +1,6 @@
 package pe.edu.upc.abilityhelpv1.servicesinterfaces;
 
+import pe.edu.upc.abilityhelpv1.entities.Rol;
 import pe.edu.upc.abilityhelpv1.entities.Schedule;
 
 import java.time.LocalDate;
@@ -12,6 +13,5 @@ public interface IScheduleServices {
     public List<Schedule> list();
     public void delete(int id);
     public List<Schedule> findByWeekDay(LocalDate weekDay);
-
-
+    public void update(Schedule schedule);
 }

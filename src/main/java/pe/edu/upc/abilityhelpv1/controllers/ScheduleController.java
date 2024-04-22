@@ -1,9 +1,11 @@
 package pe.edu.upc.abilityhelpv1.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
 import pe.edu.upc.abilityhelpv1.dtos.ScheduleDTO;
+import pe.edu.upc.abilityhelpv1.entities.Rol;
 import pe.edu.upc.abilityhelpv1.entities.Schedule;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IScheduleServices;
 
@@ -25,12 +27,19 @@ public class ScheduleController {
     }
 
     @GetMapping //listar
-    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')") //manejar la auth de USER
     public List<ScheduleDTO> list(){
         return sS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
             return m.map(y, ScheduleDTO.class); //expresion lambda para la transformacion
         }).collect(Collectors.toList()); //lista de tipo Shoe
+    }
+
+    @PutMapping("/{id}") // actualizar
+    public void actualizar(@PathVariable("id") Integer id, @RequestBody ScheduleDTO se){
+        ModelMapper m = new ModelMapper();
+        Schedule sh = m.map(se, Schedule.class);
+        sh.setIdSchedule(id); // asegurarse de que el objeto tenga el mismo ID que el proporcionado en la URL
+        sS.update(sh);
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
