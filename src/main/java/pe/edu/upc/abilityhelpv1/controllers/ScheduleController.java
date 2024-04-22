@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
 import pe.edu.upc.abilityhelpv1.dtos.ScheduleDTO;
@@ -16,17 +17,19 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Schedule")
-public class ScheduleController {
+public class    ScheduleController {
     @Autowired
     private IScheduleServices sS;
     @PostMapping //registrar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public void registrar(@RequestBody ScheduleDTO s){
         ModelMapper m = new ModelMapper();
         Schedule sh=m.map(s, Schedule.class);
         sS.insert(sh);
     }
 
-    @GetMapping //listar
+    @GetMapping("/ListaHorarios") //listar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public List<ScheduleDTO> list(){
         return sS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -35,6 +38,7 @@ public class ScheduleController {
     }
 
     @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public void actualizar(@PathVariable("id") Integer id, @RequestBody ScheduleDTO se){
         ModelMapper m = new ModelMapper();
         Schedule sh = m.map(se, Schedule.class);
@@ -43,11 +47,13 @@ public class ScheduleController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }
 
     @GetMapping("/busqueda") //listar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public List<ScheduleDTO> buscarmoedlo(@RequestParam LocalDate weekDay){
         return sS.findByWeekDay(weekDay).stream().map(y->{
             ModelMapper m = new ModelMapper();
