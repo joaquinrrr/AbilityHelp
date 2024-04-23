@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class TypeInteractionController {
     @Autowired
     private ITypeInteractionServices tS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public void registrar(@RequestBody TypeInteractionDTO typeDTO){
         ModelMapper m = new ModelMapper();

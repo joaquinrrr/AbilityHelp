@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class PersonalitiesController {
     @Autowired
     private IPersonalityServices sS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     public void registrar(@RequestBody PersonalitiesDTO p){
         ModelMapper m = new ModelMapper();
         Personalities ps=m.map(p, Personalities.class);
@@ -44,7 +44,7 @@ public class PersonalitiesController {
         sS.update(ph);
     }
 
-    @GetMapping("/cantidad")
+    @GetMapping("/cantidadUsuariosPorPersonalidad")
     public List<PersonalityPerUserDTO> cantidadUserPorPersonalidad(@RequestParam String name){
         List<String[]> filaLista = sS.quantityUserPerPersonality(name);
         List<PersonalityPerUserDTO> dtoLista = new ArrayList<>();

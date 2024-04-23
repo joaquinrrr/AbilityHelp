@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class InteractionController {
     @Autowired
     private IInteractionServices iS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     public void registrar(@RequestBody InteractionDTO inteDTO){
         ModelMapper m = new ModelMapper();
         Interaction us=m.map(inteDTO, Interaction.class);

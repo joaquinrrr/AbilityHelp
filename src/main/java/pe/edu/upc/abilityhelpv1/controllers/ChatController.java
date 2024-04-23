@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class ChatController {
     @Autowired
     private IChatServices cS;
-    @PostMapping //registrar
+    @PostMapping("/Registro") //registrar
     public void registrar(@RequestBody ChatDTO c){
         ModelMapper m = new ModelMapper();
         Chat ch=m.map(c, Chat.class);

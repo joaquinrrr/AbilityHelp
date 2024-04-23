@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class RolController {
     @Autowired
     private IRolServices sS;
-    @PostMapping //registrar
+    @PostMapping("/Registro") //registrar
     public void registrar(@RequestBody RolDTO s){
         ModelMapper m = new ModelMapper();
         Rol sh=m.map(s, Rol.class);

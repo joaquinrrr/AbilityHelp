@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class DegreeController {
     @Autowired
     private IDegreeServices sS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     public void registrar(@RequestBody DegreeDTO d){
         ModelMapper m = new ModelMapper();
         Degree de=m.map(d, Degree.class);

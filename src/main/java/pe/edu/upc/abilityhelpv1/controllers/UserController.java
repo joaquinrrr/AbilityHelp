@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private IUserServices sS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     public void registrar(@RequestBody UserDTO userDTO){
         ModelMapper m = new ModelMapper();
         User us=m.map(userDTO, User.class);

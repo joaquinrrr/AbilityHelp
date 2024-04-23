@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class AssignIncidentController {
     @Autowired
     private IAssignIncidentServices aS;
-    @PostMapping //registrar
+    @PostMapping("/Registro") //registrar
     public void registrar(@RequestBody AssignIncidentDTO a){
         ModelMapper m = new ModelMapper();
         AssignIncident ch=m.map(a, AssignIncident.class);

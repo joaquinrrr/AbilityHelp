@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class    ScheduleController {
     @Autowired
     private IScheduleServices sS;
-    @PostMapping //registrar
+    @PostMapping("/Registro") //registrar
     @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public void registrar(@RequestBody ScheduleDTO s){
         ModelMapper m = new ModelMapper();

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class MeetingController {
     @Autowired
     private IMeetServices mS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     public void registrar(@RequestBody MeetingDTO mt){
         ModelMapper m = new ModelMapper();
         Meeting me=m.map(mt, Meeting.class);

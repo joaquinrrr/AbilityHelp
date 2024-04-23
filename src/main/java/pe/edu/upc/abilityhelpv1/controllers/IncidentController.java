@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class IncidentController {
     @Autowired
     private IIncidentServices iS;
-    @PostMapping //registrar
+    @PostMapping ("/Registro")//registrar
     public void registrar(@RequestBody IncidentDTO inciDTO){
         ModelMapper m = new ModelMapper();
         Incidents in =m.map(inciDTO, Incidents.class);

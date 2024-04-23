@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class GenderController {
     @Autowired
     private IGenderServices sS;
-    @PostMapping //registrar
+    @PostMapping("/Registro") //registrar
     public void registrar(@RequestBody GenderDTO g){
         ModelMapper m = new ModelMapper();
         Gender ge=m.map(g, Gender.class);
