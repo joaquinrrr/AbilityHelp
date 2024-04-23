@@ -18,6 +18,7 @@ public class AssignIncidentController {
     @Autowired
     private IAssignIncidentServices aS;
     @PostMapping("/Registro") //registrar
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN') and !hasAuthority('COACH')")
     public void registrar(@RequestBody AssignIncidentDTO a){
         ModelMapper m = new ModelMapper();
         AssignIncident ch=m.map(a, AssignIncident.class);
@@ -25,6 +26,7 @@ public class AssignIncidentController {
     }
 
     @GetMapping //listar
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN') and !hasAuthority('COACH')")
     public List<AssignIncidentDTO> list(){
         return aS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
