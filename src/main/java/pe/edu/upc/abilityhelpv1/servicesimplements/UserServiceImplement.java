@@ -34,8 +34,5 @@ public class UserServiceImplement implements IUserServices {
         sR.save(user);
     }
 
-    @Override
-    public List<String[]> quantityPersonalityPerCarrer() {
-        return sR.quantityPersonalityPerCarrer();
-    }
+
 }

@@ -10,7 +10,6 @@ public class PersonalitiesDTO {
     private int idPersonality;
     private String namePersonality;
     private String description;
-    private User user;
 
     public int getIdPersonality() {
         return idPersonality;
@@ -36,11 +35,4 @@ public class PersonalitiesDTO {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

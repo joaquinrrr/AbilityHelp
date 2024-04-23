@@ -2,13 +2,8 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.abilityhelpv1.dtos.AssignIncidentCountDTO;
-import pe.edu.upc.abilityhelpv1.dtos.PersonalityPerCarrerDTO;
-import pe.edu.upc.abilityhelpv1.dtos.TypeInteractionDTO;
 import pe.edu.upc.abilityhelpv1.dtos.UserDTO;
-import pe.edu.upc.abilityhelpv1.entities.TypeInteraction;
 import pe.edu.upc.abilityhelpv1.entities.User;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IUserServices;
 
@@ -29,7 +24,6 @@ public class UserController {
     }
 
     @GetMapping //listar
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<UserDTO> list(){
         return sS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -46,30 +40,14 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public UserDTO listarId(@PathVariable("id") int id) {
         ModelMapper m = new ModelMapper();
         UserDTO dto = m.map(sS.listarId(id), UserDTO.class);
         return dto;
-    }
-    @GetMapping("/cantidadPersonalidadesCarrera")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public List<PersonalityPerCarrerDTO> cantidadPersonalidadesCarrera(){
-        List<String[]> filaLista = sS.quantityPersonalityPerCarrer();
-        List<PersonalityPerCarrerDTO> dtoLista = new ArrayList<>();
-        for(String[] columna: filaLista){
-            PersonalityPerCarrerDTO dto = new PersonalityPerCarrerDTO();
-            dto.setTypePersonality(columna[0]);
-            dto.setDegree(columna[1]);
-            dto.setQuantity(Integer.parseInt(columna[2]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
     }
 
 }

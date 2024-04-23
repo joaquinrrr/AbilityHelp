@@ -9,7 +9,6 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 public class GenderDTO {
     private int idGender;
     private String nameGender;
-    private User user;
 
     public int getIdGender() {
         return idGender;
@@ -27,11 +26,4 @@ public class GenderDTO {
         this.nameGender = nameGender;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

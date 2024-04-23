@@ -15,6 +15,8 @@ public class UserDTO {
     private String password;
     private int ageUser;
     private Boolean enabled;
+    private Gender gender;
+    private Personalities personality;
 
     public int getIdUser() {
         return idUser;
@@ -62,5 +64,21 @@ public class UserDTO {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Personalities getPersonality() {
+        return personality;
+    }
+
+    public void setPersonality(Personalities personality) {
+        this.personality = personality;
     }
 }

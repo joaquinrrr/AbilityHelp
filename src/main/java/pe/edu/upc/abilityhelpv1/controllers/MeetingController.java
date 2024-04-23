@@ -2,7 +2,6 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.AssignIncidentByUserDTO;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingDTO;
@@ -48,7 +47,6 @@ public class MeetingController {
     }
 
     @GetMapping("/cantidadMeetPorCoach")
-    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public List<MeetingPerCoachDTO> cantidadMeetPorCoach(@RequestParam String name){
         List<String[]> filaLista = mS.QuantityMeetPerCoach(name);
         List<MeetingPerCoachDTO> dtoLista = new ArrayList<>();
@@ -62,7 +60,6 @@ public class MeetingController {
         return dtoLista;
     }
     @GetMapping("/reunionporUsuarioyFecha")
-    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN') and !hasAuthority('COACH')")
     public List<MeetingPerUserDateDTO> reunionporUsuarioyFecha(@RequestParam LocalDate date){
         List<String[]> filaLista = mS.meetingPerUserDate(date);
         List<MeetingPerUserDateDTO> dtoLista = new ArrayList<>();

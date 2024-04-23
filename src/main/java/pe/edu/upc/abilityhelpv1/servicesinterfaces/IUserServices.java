@@ -11,6 +11,5 @@ public interface IUserServices {
     public void delete(int id);
     public User listarId(int idUsuario);
     public void update(User user);
-    public List<String[]> quantityPersonalityPerCarrer();
 
 }

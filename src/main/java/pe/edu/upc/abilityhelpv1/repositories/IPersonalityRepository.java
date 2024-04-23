@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface IPersonalityRepository extends JpaRepository<Personalities, Integer> {
 
+    //PERSONALITY ACTUALIZAR
     @Query(value = "select name_personality, count(*) as Quantity_of_Users FROM personality\n" +
             "where name_personality = :name \n" +
             "group by name_personality", nativeQuery = true)

@@ -3,7 +3,6 @@ package pe.edu.upc.abilityhelpv1.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.AssignIncidentCountDTO;
 import pe.edu.upc.abilityhelpv1.dtos.InteractionDTO;
@@ -44,7 +43,6 @@ public class InteractionController {
     }
 
     @GetMapping("/interactionUsers")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<InteractionWithUserDTO> interactionUsers(){
         List<String[]> filaLista = iS.interactionWithUsers();
         List<InteractionWithUserDTO> dtoLista = new ArrayList<>();

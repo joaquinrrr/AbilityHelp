@@ -23,10 +23,31 @@ public class User implements Serializable {
     private int ageUser;
     private Boolean enabled;
     // En User.java
+    @ManyToOne
+    @JoinColumn(name = "gender_id", nullable = false)
+    private Gender gender;
+    @ManyToOne
+    @JoinColumn(name = "personality_id", nullable = false)
+    private Personalities personality;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     @JsonIgnore
     private List<Rol> rol;
+
+    public User() {
+    }
+
+    public User(Long idUser, String username, String emailUser, String password, int ageUser, Boolean enabled, Gender gender, Personalities personality, List<Rol> rol) {
+        this.idUser = idUser;
+        this.username = username;
+        this.emailUser = emailUser;
+        this.password = password;
+        this.ageUser = ageUser;
+        this.enabled = enabled;
+        this.gender = gender;
+        this.personality = personality;
+        this.rol = rol;
+    }
 
     public Long getIdUser() {
         return idUser;
@@ -74,6 +95,22 @@ public class User implements Serializable {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Personalities getPersonality() {
+        return personality;
+    }
+
+    public void setPersonality(Personalities personality) {
+        this.personality = personality;
     }
 
     public List<Rol> getRol() {

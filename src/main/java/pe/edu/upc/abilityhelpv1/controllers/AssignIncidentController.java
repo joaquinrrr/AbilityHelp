@@ -2,7 +2,6 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.*;
 import pe.edu.upc.abilityhelpv1.entities.AssignIncident;
@@ -18,7 +17,6 @@ public class AssignIncidentController {
     @Autowired
     private IAssignIncidentServices aS;
     @PostMapping("/Registro") //registrar
-    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN') and !hasAuthority('COACH')")
     public void registrar(@RequestBody AssignIncidentDTO a){
         ModelMapper m = new ModelMapper();
         AssignIncident ch=m.map(a, AssignIncident.class);
@@ -26,7 +24,6 @@ public class AssignIncidentController {
     }
 
     @GetMapping //listar
-    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN') and !hasAuthority('COACH')")
     public List<AssignIncidentDTO> list(){
         return aS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -43,7 +40,6 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/incidentesPorUsuario")
-    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public List<AssignIncidentByUserDTO> incidentesPorUsuario(@RequestParam String name){
         List<String[]> filaLista = aS.AssignIncidentByUser(name);
         List<AssignIncidentByUserDTO> dtoLista = new ArrayList<>();
@@ -59,7 +55,6 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/incidentesOcurridos")
-    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAuthority('USER')")
     public List<AssignIncidentCountDTO> cantidadIncidentesOcurridos(){
         List<String[]> filaLista = aS.AssignIncidentsCount();
         List<AssignIncidentCountDTO> dtoLista = new ArrayList<>();
@@ -73,7 +68,6 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/cantidadUsuarioIncidentes")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<QuantityUserIncidentDTO> cantidadUsuarioIncidentes(){
         List<String[]> filaLista = aS.quantityUserIncidents();
         List<QuantityUserIncidentDTO> dtoLista = new ArrayList<>();
