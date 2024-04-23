@@ -23,8 +23,8 @@ public interface IAssignIncidentRepository extends JpaRepository<AssignIncident,
             "group by inc.type_incident ", nativeQuery = true)
     public List<String[]> AssignIncidentsCount();
 
-    @Query(value = "select us.username as Reporter, count(*) as Quantity_Incidents from assign_incident as ai \n" +
-            "inner join user_table as us ON us.id_user = ai.id_user_reporter \n" +
+    @Query(value = "select us.username as Banned, count(*) as Quantity_Incidents from assign_incident as ai \n" +
+            "inner join user_table as us ON us.id_user = ai.id_user_ban \n" +
             "group by us.username ", nativeQuery = true) // native query: PUEDE UTILIZAR UNA QUERY DE SQL
     public List<String[]>quantityUserIncidents();
 

@@ -1,15 +1,15 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
 public class QuantityUserIncidentDTO {
-    private String reporter;
+    private String banned;
     private int quantity;
 
-    public String getReporter() {
-        return reporter;
+    public String getBanned() {
+        return banned;
     }
 
-    public void setReporter(String reporter) {
-        this.reporter = reporter;
+    public void setBanned(String banned) {
+        this.banned = banned;
     }
 
     public int getQuantity() {

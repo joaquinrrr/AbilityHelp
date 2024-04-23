@@ -77,7 +77,7 @@ public class AssignIncidentController {
         List<QuantityUserIncidentDTO> dtoLista = new ArrayList<>();
         for(String[] columna: filaLista){
             QuantityUserIncidentDTO dto = new QuantityUserIncidentDTO();
-            dto.setReporter(columna[0]);
+            dto.setBanned(columna[0]);
             dto.setQuantity(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
