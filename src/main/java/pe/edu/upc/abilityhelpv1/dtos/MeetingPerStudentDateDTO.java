@@ -3,7 +3,7 @@ package pe.edu.upc.abilityhelpv1.dtos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class MeetingPerUserDateDTO {
+public class MeetingPerStudentDateDTO {
     private String nameU;
     private LocalDate date;
     private LocalDateTime starthour;

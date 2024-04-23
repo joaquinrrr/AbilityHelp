@@ -20,11 +20,11 @@ public class AssignIncident {
     @JoinColumn(name = "idAdmin", nullable = false)
     private User idAdmin;
     @ManyToOne
-    @JoinColumn(name = "idUserReporter", nullable = false)
-    private User idUserReporter;
+    @JoinColumn(name = "idStudentReporter", nullable = false)
+    private User idStudentReporter;
     @ManyToOne
-    @JoinColumn(name = "idUserBan", nullable = false)
-    private User idUserBan;
+    @JoinColumn(name = "idStudentBan", nullable = false)
+    private User idStudentBan;
 
     @ManyToOne
     @JoinColumn(name = "typeIncident", nullable = false)
@@ -33,14 +33,14 @@ public class AssignIncident {
     public AssignIncident() {
     }
 
-    public AssignIncident(int id, String status, LocalDate dateAssign, String detailIncident, User idAdmin, User idUserReporter, User idUserBan, Incidents incidents) {
+    public AssignIncident(int id, String status, LocalDate dateAssign, String detailIncident, User idAdmin, User idStudentReporter, User idStudentBan, Incidents incidents) {
         this.id = id;
         this.status = status;
         this.dateAssign = dateAssign;
         this.detailIncident = detailIncident;
         this.idAdmin = idAdmin;
-        this.idUserReporter = idUserReporter;
-        this.idUserBan = idUserBan;
+        this.idStudentReporter = idStudentReporter;
+        this.idStudentBan = idStudentBan;
         this.incidents = incidents;
     }
 
@@ -84,20 +84,20 @@ public class AssignIncident {
         this.idAdmin = idAdmin;
     }
 
-    public User getIdUserReporter() {
-        return idUserReporter;
+    public User getIdStudentReporter() {
+        return idStudentReporter;
     }
 
-    public void setIdUserReporter(User idUserReporter) {
-        this.idUserReporter = idUserReporter;
+    public void setIdStudentReporter(User idStudentReporter) {
+        this.idStudentReporter = idStudentReporter;
     }
 
-    public User getIdUserBan() {
-        return idUserBan;
+    public User getIdStudentBan() {
+        return idStudentBan;
     }
 
-    public void setIdUserBan(User idUserBan) {
-        this.idUserBan = idUserBan;
+    public void setIdStudentBan(User idStudentBan) {
+        this.idStudentBan = idStudentBan;
     }
 
     public Incidents getIncidents() {

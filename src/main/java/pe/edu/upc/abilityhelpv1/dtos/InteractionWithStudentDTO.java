@@ -2,7 +2,7 @@ package pe.edu.upc.abilityhelpv1.dtos;
 
 import java.time.LocalDate;
 
-public class InteractionWithUserDTO {
+public class InteractionWithStudentDTO {
     private String sender;
     private String receiver;
     private String interaction;

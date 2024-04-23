@@ -1,15 +1,15 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
-public class UserByDegreeDTO {
-    private String nameDegree;
+public class QuantityStudentIncidentDTO {
+    private String banned;
     private int quantity;
 
-    public String getNameDegree() {
-        return nameDegree;
+    public String getBanned() {
+        return banned;
     }
 
-    public void setNameDegree(String nameDegree) {
-        this.nameDegree = nameDegree;
+    public void setBanned(String banned) {
+        this.banned = banned;
     }
 
     public int getQuantity() {

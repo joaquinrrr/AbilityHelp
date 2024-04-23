@@ -9,7 +9,6 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 public class DegreeDTO {
     private int idCarrera;
     private String nameDegree;
-
     private User user;
 
     public int getIdCarrera() {

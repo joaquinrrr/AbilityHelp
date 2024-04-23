@@ -15,22 +15,22 @@ public class Chat {
     @Column(name = "dateSend", nullable = false, length = 35)
     private LocalDateTime dateSend;
     @ManyToOne
-    @JoinColumn(name = "idUserSender", nullable = false)
-    private User idUserSender;
+    @JoinColumn(name = "idStudentSender", nullable = false)
+    private User idStudentSender;
     @ManyToOne
-    @JoinColumn(name = "idUserRecipient", nullable = false)
-    private User idUserRecipient;
+    @JoinColumn(name = "idStudentRecipient", nullable = false)
+    private User idStudentRecipient;
 
 
     public Chat() {
     }
 
-    public Chat(int idChat, String message, LocalDateTime dateSend, User idUserSender, User idUserRecipient) {
+    public Chat(int idChat, String message, LocalDateTime dateSend, User idStudentSender, User idStudentRecipient) {
         this.idChat = idChat;
         this.message = message;
         this.dateSend = dateSend;
-        this.idUserSender = idUserSender;
-        this.idUserRecipient = idUserRecipient;
+        this.idStudentSender = idStudentSender;
+        this.idStudentRecipient = idStudentRecipient;
     }
 
     public int getIdChat() {
@@ -57,19 +57,19 @@ public class Chat {
         this.dateSend = dateSend;
     }
 
-    public User getIdUserSender() {
-        return idUserSender;
+    public User getIdStudentSender() {
+        return idStudentSender;
     }
 
-    public void setIdUserSender(User idUserSender) {
-        this.idUserSender = idUserSender;
+    public void setIdStudentSender(User idStudentSender) {
+        this.idStudentSender = idStudentSender;
     }
 
-    public User getIdUserRecipient() {
-        return idUserRecipient;
+    public User getIdStudentRecipient() {
+        return idStudentRecipient;
     }
 
-    public void setIdUserRecipient(User idUserRecipient) {
-        this.idUserRecipient = idUserRecipient;
+    public void setIdStudentRecipient(User idStudentRecipient) {
+        this.idStudentRecipient = idStudentRecipient;
     }
 }

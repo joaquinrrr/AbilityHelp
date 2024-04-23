@@ -33,8 +33,8 @@ public class AssignIncidentImplementIncident implements IAssignIncidentServices 
     }
 
     @Override
-    public List<String[]> AssignIncidentByUser(String name) {
-        return aR.AssignIncidentByUser(name);
+    public List<String[]> AssignIncidentByStudent(String name) {
+        return aR.AssignIncidentByStudent(name);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class AssignIncidentImplementIncident implements IAssignIncidentServices 
     }
 
     @Override
-    public List<String[]> quantityUserIncidents() {
-        return aR.quantityUserIncidents();
+    public List<String[]> quantityStudentIncidents() {
+        return aR.quantityStudentIncidents();
     }
 }

@@ -10,8 +10,8 @@ public class Meeting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMeet;
     @ManyToOne
-    @JoinColumn(name="userId")
-    private User userId;
+    @JoinColumn(name="studentId")
+    private User studentId;
 
     @ManyToOne
     @JoinColumn(name = "idSchedule")
@@ -20,9 +20,9 @@ public class Meeting {
     public Meeting() {
     }
 
-    public Meeting(int idMeet, User userId, Schedule idmeetSchedule) {
+    public Meeting(int idMeet, User studentId, Schedule idmeetSchedule) {
         this.idMeet = idMeet;
-        this.userId = userId;
+        this.studentId = studentId;
         this.idmeetSchedule = idmeetSchedule;
     }
 
@@ -34,12 +34,12 @@ public class Meeting {
         this.idMeet = idMeet;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getStudentId() {
+        return studentId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setStudentId(User studentId) {
+        this.studentId = studentId;
     }
 
     public Schedule getIdmeetSchedule() {

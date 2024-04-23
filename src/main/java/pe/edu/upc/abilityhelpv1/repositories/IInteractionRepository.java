@@ -13,8 +13,9 @@ public interface IInteractionRepository extends JpaRepository<Interaction, Integ
     @Query(value = "select usend.username as Sender, urec.username as Receiver, \n" +
             "ti.interaction as Interaction, i.date_interaction as Date from interaction as i \n" +
             "inner join type_interacion as ti ON ti.id = i.interaction_id \n" +
-            "inner join user_table as usend ON usend.id_user = i.user_id_sender \n" +
-            "inner join user_table as urec ON urec.id_user = i.user_id_receiver \n" +
+            "inner join user_table as usend ON usend.id_user = i.Student_id_Sender \n" +
+            "inner join user_table as urec ON urec.id_user = i.Student_id_Sender \n" +
             "group by usend.username, urec.username, ti.interaction, i.date_interaction ", nativeQuery = true)
     public List<String[]> interactionWithUsers();
+    //CAMBIAR QUERY CORRECTAMENTE
 }

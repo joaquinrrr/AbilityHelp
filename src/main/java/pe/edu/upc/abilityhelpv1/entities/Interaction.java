@@ -15,11 +15,11 @@ public class Interaction {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id_Sender", nullable = false)
-    private User userSender;
+    @JoinColumn(name = "Student_id_Sender", nullable = false)
+    private User studentSender;
     @ManyToOne
-    @JoinColumn(name = "user_id_Receiver", nullable = false)
-    private User userReceiver;
+    @JoinColumn(name = "Student_id_Receiver", nullable = false)
+    private User studentReceiver;
 
     @ManyToOne
     @JoinColumn(name = "interaction_id", nullable = false)
@@ -28,11 +28,11 @@ public class Interaction {
     public Interaction() {
     }
 
-    public Interaction(int id, LocalDate date, User userSender, User userReceiver, TypeInteraction idType) {
+    public Interaction(int id, LocalDate date, User studentSender, User studentReceiver, TypeInteraction idType) {
         this.id = id;
         this.date = date;
-        this.userSender = userSender;
-        this.userReceiver = userReceiver;
+        this.studentSender = studentSender;
+        this.studentReceiver = studentReceiver;
         this.idType = idType;
     }
 
@@ -52,20 +52,20 @@ public class Interaction {
         this.date = date;
     }
 
-    public User getUserSender() {
-        return userSender;
+    public User getStudentSender() {
+        return studentSender;
     }
 
-    public void setUserSender(User userSender) {
-        this.userSender = userSender;
+    public void setStudentSender(User studentSender) {
+        this.studentSender = studentSender;
     }
 
-    public User getUserReceiver() {
-        return userReceiver;
+    public User getStudentReceiver() {
+        return studentReceiver;
     }
 
-    public void setUserReceiver(User userReceiver) {
-        this.userReceiver = userReceiver;
+    public void setStudentReceiver(User studentReceiver) {
+        this.studentReceiver = studentReceiver;
     }
 
     public TypeInteraction getIdType() {

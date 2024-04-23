@@ -12,8 +12,8 @@ public interface IAssignIncidentServices {
     public void delete(int id);
     public void update(AssignIncident assignIncident);
 
-    public List<String[]> AssignIncidentByUser(String name);
+    public List<String[]> AssignIncidentByStudent(String name);
     public List<String[]> AssignIncidentsCount();
-    public List<String[]>quantityUserIncidents();
+    public List<String[]>quantityStudentIncidents();
 
 }

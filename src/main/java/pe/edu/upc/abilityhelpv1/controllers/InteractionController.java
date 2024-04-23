@@ -2,11 +2,9 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.abilityhelpv1.dtos.AssignIncidentCountDTO;
 import pe.edu.upc.abilityhelpv1.dtos.InteractionDTO;
-import pe.edu.upc.abilityhelpv1.dtos.InteractionWithUserDTO;
+import pe.edu.upc.abilityhelpv1.dtos.InteractionWithStudentDTO;
 import pe.edu.upc.abilityhelpv1.entities.Interaction;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IInteractionServices;
 
@@ -43,11 +41,11 @@ public class InteractionController {
     }
 
     @GetMapping("/interactionUsers")
-    public List<InteractionWithUserDTO> interactionUsers(){
+    public List<InteractionWithStudentDTO> interactionUsers(){
         List<String[]> filaLista = iS.interactionWithUsers();
-        List<InteractionWithUserDTO> dtoLista = new ArrayList<>();
+        List<InteractionWithStudentDTO> dtoLista = new ArrayList<>();
         for(String[] columna: filaLista){
-            InteractionWithUserDTO dto = new InteractionWithUserDTO();
+            InteractionWithStudentDTO dto = new InteractionWithStudentDTO();
             dto.setSender(columna[0]);
             dto.setReceiver(columna[1]);
             dto.setInteraction(columna[2]);

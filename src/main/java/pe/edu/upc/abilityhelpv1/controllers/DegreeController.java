@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.DegreeDTO;
-import pe.edu.upc.abilityhelpv1.dtos.UserByDegreeDTO;
+import pe.edu.upc.abilityhelpv1.dtos.StudentByDegreeDTO;
 import pe.edu.upc.abilityhelpv1.entities.Degree;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IDegreeServices;
 
@@ -40,11 +40,11 @@ public class DegreeController {
     }
 
     @GetMapping("/cantidadUserPorCarrera")
-    public List<UserByDegreeDTO> cantidadUserPorCarrera(){
+    public List<StudentByDegreeDTO> cantidadUserPorCarrera(){
         List<String[]> filaLista = sS.quantityUserByCarrer();
-        List<UserByDegreeDTO> dtoLista = new ArrayList<>();
+        List<StudentByDegreeDTO> dtoLista = new ArrayList<>();
         for(String[] columna: filaLista){
-            UserByDegreeDTO dto = new UserByDegreeDTO();
+            StudentByDegreeDTO dto = new StudentByDegreeDTO();
             dto.setNameDegree(columna[0]);
             dto.setQuantity(Integer.parseInt(columna[1]));
             dtoLista.add(dto);

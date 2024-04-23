@@ -20,7 +20,7 @@ public interface IMeetRepository extends JpaRepository<Meeting, Integer> {
     @Query(value = "select us.username as Name, sc.week_day as Date , sc.start_hour, sc.finish_hour  from meeting as me \n" +
             "inner join user_table as us ON us.id_user = me.user_id \n" +
             "inner join schedule as sc ON sc.id_schedule = me.id_schedule \n" +
-            "where us.username =:name and sc.week_day =:date \n" +
+            "where sc.week_day =:date \n" +
             "group by us.username, sc.week_day, sc.start_hour, sc.finish_hour", nativeQuery = true)
     public List<String[]> meetingPerUserDate(@Param("date") LocalDate date);
 }

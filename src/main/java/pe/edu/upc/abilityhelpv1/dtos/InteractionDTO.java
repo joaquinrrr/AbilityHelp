@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class InteractionDTO {
     private int id;
     private LocalDate date;
-    private User userSender;
-    private User userReceiver;
+    private User StudentSender;
+    private User StudentReceiver;
     private TypeInteraction idType;
 
     public int getId() {
@@ -29,20 +29,20 @@ public class InteractionDTO {
         this.date = date;
     }
 
-    public User getUserSender() {
-        return userSender;
+    public User getStudentSender() {
+        return StudentSender;
     }
 
-    public void setUserSender(User userSender) {
-        this.userSender = userSender;
+    public void setStudentSender(User studentSender) {
+        StudentSender = studentSender;
     }
 
-    public User getUserReceiver() {
-        return userReceiver;
+    public User getStudentReceiver() {
+        return StudentReceiver;
     }
 
-    public void setUserReceiver(User userReceiver) {
-        this.userReceiver = userReceiver;
+    public void setStudentReceiver(User studentReceiver) {
+        StudentReceiver = studentReceiver;
     }
 
     public TypeInteraction getIdType() {

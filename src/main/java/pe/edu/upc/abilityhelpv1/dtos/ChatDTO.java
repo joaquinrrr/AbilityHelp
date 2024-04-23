@@ -9,8 +9,8 @@ public class ChatDTO {
     private int idChat;
     private String message;
     private LocalDateTime dateSend;
-    private User idUserSender;
-    private User idUserRecipient;
+    private User idStudentSender;
+    private User idStudentRecipient;
 
     public int getIdChat() {
         return idChat;
@@ -36,19 +36,19 @@ public class ChatDTO {
         this.dateSend = dateSend;
     }
 
-    public User getIdUserSender() {
-        return idUserSender;
+    public User getIdStudentSender() {
+        return idStudentSender;
     }
 
-    public void setIdUserSender(User idUserSender) {
-        this.idUserSender = idUserSender;
+    public void setIdStudentSender(User idStudentSender) {
+        this.idStudentSender = idStudentSender;
     }
 
-    public User getIdUserRecipient() {
-        return idUserRecipient;
+    public User getIdStudentRecipient() {
+        return idStudentRecipient;
     }
 
-    public void setIdUserRecipient(User idUserRecipient) {
-        this.idUserRecipient = idUserRecipient;
+    public void setIdStudentRecipient(User idStudentRecipient) {
+        this.idStudentRecipient = idStudentRecipient;
     }
 }

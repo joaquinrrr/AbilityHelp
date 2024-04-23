@@ -6,7 +6,7 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 
 public class MeetingDTO {
     private int idMeet;
-    private User userId;
+    private User studentId;
     private Schedule idmeetSchedule;
 
     public int getIdMeet() {
@@ -17,12 +17,12 @@ public class MeetingDTO {
         this.idMeet = idMeet;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getStudentId() {
+        return studentId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setStudentId(User studentId) {
+        this.studentId = studentId;
     }
 
     public Schedule getIdmeetSchedule() {

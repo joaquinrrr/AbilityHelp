@@ -40,11 +40,11 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/incidentesPorUsuario")
-    public List<AssignIncidentByUserDTO> incidentesPorUsuario(@RequestParam String name){
-        List<String[]> filaLista = aS.AssignIncidentByUser(name);
-        List<AssignIncidentByUserDTO> dtoLista = new ArrayList<>();
+    public List<AssignIncidentByStudentDTO> incidentesPorEstudiante(@RequestParam String name){
+        List<String[]> filaLista = aS.AssignIncidentByStudent(name);
+        List<AssignIncidentByStudentDTO> dtoLista = new ArrayList<>();
         for(String[] columna: filaLista){
-            AssignIncidentByUserDTO dto = new AssignIncidentByUserDTO();
+            AssignIncidentByStudentDTO dto = new AssignIncidentByStudentDTO();
             dto.setReporter(columna[0]);
             dto.setBanned(columna[1]);
             dto.setIncident(columna[2]);
@@ -68,11 +68,11 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/cantidadUsuarioIncidentes")
-    public List<QuantityUserIncidentDTO> cantidadUsuarioIncidentes(){
-        List<String[]> filaLista = aS.quantityUserIncidents();
-        List<QuantityUserIncidentDTO> dtoLista = new ArrayList<>();
+    public List<QuantityStudentIncidentDTO> cantidadEstudianteIncidentes(){
+        List<String[]> filaLista = aS.quantityStudentIncidents();
+        List<QuantityStudentIncidentDTO> dtoLista = new ArrayList<>();
         for(String[] columna: filaLista){
-            QuantityUserIncidentDTO dto = new QuantityUserIncidentDTO();
+            QuantityStudentIncidentDTO dto = new QuantityStudentIncidentDTO();
             dto.setBanned(columna[0]);
             dto.setQuantity(Integer.parseInt(columna[1]));
             dtoLista.add(dto);

@@ -3,10 +3,9 @@ package pe.edu.upc.abilityhelpv1.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.abilityhelpv1.dtos.AssignIncidentByUserDTO;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingDTO;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingPerCoachDTO;
-import pe.edu.upc.abilityhelpv1.dtos.MeetingPerUserDateDTO;
+import pe.edu.upc.abilityhelpv1.dtos.MeetingPerStudentDateDTO;
 import pe.edu.upc.abilityhelpv1.entities.Meeting;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
 
@@ -60,12 +59,12 @@ public class MeetingController {
         return dtoLista;
     }
     @GetMapping("/reunionporUsuarioyFecha")
-    public List<MeetingPerUserDateDTO> reunionporUsuarioyFecha(@RequestParam LocalDate date){
+    public List<MeetingPerStudentDateDTO> reunionporUsuarioyFecha(@RequestParam LocalDate date){
         List<String[]> filaLista = mS.meetingPerUserDate(date);
-        List<MeetingPerUserDateDTO> dtoLista = new ArrayList<>();
+        List<MeetingPerStudentDateDTO> dtoLista = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
         for(String[] columna: filaLista){
-            MeetingPerUserDateDTO dto = new MeetingPerUserDateDTO();
+            MeetingPerStudentDateDTO dto = new MeetingPerStudentDateDTO();
             dto.setNameU(columna[0]);
             dto.setDate(LocalDate.parse(columna[1]));
             dto.setStarthour(LocalDateTime.parse(columna[2], formatter));

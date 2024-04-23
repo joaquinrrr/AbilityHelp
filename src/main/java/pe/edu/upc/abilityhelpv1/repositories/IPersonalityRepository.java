@@ -12,10 +12,12 @@ import java.util.List;
 public interface IPersonalityRepository extends JpaRepository<Personalities, Integer> {
 
     //PERSONALITY ACTUALIZAR
-    @Query(value = "select name_personality, count(*) as Quantity_of_Users FROM personality\n" +
-            "where name_personality = :name \n" +
-            "group by name_personality", nativeQuery = true)
+    @Query(value = "select name_personality, count(*) as Quantity_of_Users FROM personality \n" +
+            "where name_personality =:name \n" +
+            "group by name_personality \n", nativeQuery = true)
     public List<String[]> quantityUserPerPersonality(@Param("name") String name);
+
+    //cambiar query
 
 
 }

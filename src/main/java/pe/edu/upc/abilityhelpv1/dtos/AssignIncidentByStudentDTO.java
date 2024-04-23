@@ -1,6 +1,6 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
-public class AssignIncidentByUserDTO {
+public class AssignIncidentByStudentDTO {
     private String reporter;
     private String banned;
     private String incident;

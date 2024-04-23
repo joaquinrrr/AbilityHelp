@@ -15,8 +15,8 @@ public class AssignIncidentDTO {
     private String detailIncident;
 
     private User idAdmin;
-    private User idUserReporter;
-    private User idUserBan;
+    private User idStudentReporter;
+    private User idStudentBan;
 
     private Incidents incidents;
 
@@ -60,20 +60,20 @@ public class AssignIncidentDTO {
         this.idAdmin = idAdmin;
     }
 
-    public User getIdUserReporter() {
-        return idUserReporter;
+    public User getIdStudentReporter() {
+        return idStudentReporter;
     }
 
-    public void setIdUserReporter(User idUserReporter) {
-        this.idUserReporter = idUserReporter;
+    public void setIdStudentReporter(User idStudentReporter) {
+        this.idStudentReporter = idStudentReporter;
     }
 
-    public User getIdUserBan() {
-        return idUserBan;
+    public User getIdStudentBan() {
+        return idStudentBan;
     }
 
-    public void setIdUserBan(User idUserBan) {
-        this.idUserBan = idUserBan;
+    public void setIdStudentBan(User idStudentBan) {
+        this.idStudentBan = idStudentBan;
     }
 
     public Incidents getIncidents() {
