@@ -46,4 +46,9 @@ public class AssignIncidentImplementIncident implements IAssignIncidentServices 
     public List<String[]> quantityStudentIncidents() {
         return aR.quantityStudentIncidents();
     }
+
+    @Override
+    public List<String[]> quantityIncidentsPerMonth(int year) {
+        return aR.quantityIncidentsPerMonth(year);
+    }
 }

@@ -80,6 +80,18 @@ public class AssignIncidentController {
         return dtoLista;
     }
 
+    @GetMapping("/cantidadIncidentesPorMes")
+    public List<QuantityIncidentsPerMonthDTO> cantidadIncidentesPorMes(@RequestParam int year){
+        List<String[]> filaLista = aS.quantityIncidentsPerMonth(year);
+        List<QuantityIncidentsPerMonthDTO> dtoLista = new ArrayList<>();
+        for(String[] columna: filaLista){
+            QuantityIncidentsPerMonthDTO dto = new QuantityIncidentsPerMonthDTO();
+            dto.setMonth(columna[0]);
+            dto.setQuantity(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando

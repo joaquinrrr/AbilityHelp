@@ -1,5 +1,6 @@
 package pe.edu.upc.abilityhelpv1.servicesinterfaces;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import pe.edu.upc.abilityhelpv1.entities.TypeInteraction;
 import pe.edu.upc.abilityhelpv1.entities.User;
 

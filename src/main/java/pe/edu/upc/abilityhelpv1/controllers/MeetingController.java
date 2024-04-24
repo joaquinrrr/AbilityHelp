@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingDTO;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingPerCoachDTO;
 import pe.edu.upc.abilityhelpv1.dtos.MeetingPerStudentDateDTO;
+import pe.edu.upc.abilityhelpv1.dtos.QuantityMeetsPerMonthDTO;
 import pe.edu.upc.abilityhelpv1.entities.Meeting;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
 
@@ -69,6 +70,19 @@ public class MeetingController {
             dto.setDate(LocalDate.parse(columna[1]));
             dto.setStarthour(LocalDateTime.parse(columna[2], formatter));
             dto.setFinishhour(LocalDateTime.parse(columna[3], formatter));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/cantidadReunionesPorMes")
+    public List<QuantityMeetsPerMonthDTO> cantidadReunionesPorMes(@RequestParam int year){
+        List<String[]> filaLista = mS.quantityMeetsPerMonth(year);
+        List<QuantityMeetsPerMonthDTO> dtoLista = new ArrayList<>();
+        for(String[] columna: filaLista){
+            QuantityMeetsPerMonthDTO dto = new QuantityMeetsPerMonthDTO();
+            dto.setMonth(columna[0]);
+            dto.setQuantity(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

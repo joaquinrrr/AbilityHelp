@@ -41,4 +41,9 @@ public class MeetingServiceImplement implements IMeetServices {
     public List<String[]> meetingPerUserDate(LocalDate date) {
         return sR.meetingPerUserDate(date);
     }
+
+    @Override
+    public List<String[]> quantityMeetsPerMonth(int year) {
+        return sR.quantityMeetsPerMonth(year);
+    }
 }

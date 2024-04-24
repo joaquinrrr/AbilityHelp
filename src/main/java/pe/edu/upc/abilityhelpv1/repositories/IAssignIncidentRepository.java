@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 import pe.edu.upc.abilityhelpv1.entities.AssignIncident;
 
 import java.util.List;
@@ -27,6 +28,12 @@ public interface IAssignIncidentRepository extends JpaRepository<AssignIncident,
             "inner join user_table as us ON us.id_user = ai.id_student_ban \n" +
             "group by us.username ", nativeQuery = true) // native query: PUEDE UTILIZAR UNA QUERY DE SQL
     public List<String[]>quantityStudentIncidents();
+    @Query(value = "SELECT to_char(date_assign, 'Month') AS mes, \n" +
+            "COUNT(*) AS cantidad_incidentes \n" +
+            "FROM assign_incident \n" +
+            "WHERE date_part('year', date_assign) =:year \n" +
+            "GROUP BY mes ", nativeQuery = true)
+    public List<String[]>quantityIncidentsPerMonth(@RequestParam int year);
 
 
 }
