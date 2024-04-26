@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.DegreeDTO;
-import pe.edu.upc.abilityhelpv1.dtos.StudentByDegreeDTO;
 import pe.edu.upc.abilityhelpv1.entities.Degree;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IDegreeServices;
 
@@ -37,19 +36,6 @@ public class DegreeController {
         Degree dh = m.map(d, Degree.class);
         dh.setIdCarrera(id); // asegurarse de que el objeto tenga el mismo ID que el proporcionado en la URL
         sS.update(dh);
-    }
-
-    @GetMapping("/cantidadUserPorCarrera")
-    public List<StudentByDegreeDTO> cantidadUserPorCarrera(){
-        List<String[]> filaLista = sS.quantityUserByCarrer();
-        List<StudentByDegreeDTO> dtoLista = new ArrayList<>();
-        for(String[] columna: filaLista){
-            StudentByDegreeDTO dto = new StudentByDegreeDTO();
-            dto.setNameDegree(columna[0]);
-            dto.setQuantity(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando

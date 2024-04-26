@@ -93,6 +93,21 @@ public class AssignIncidentController {
         return dtoLista;
     }
 
+    @GetMapping("/cantidadIncidentesPorEstado")
+    public List<QuantityIncidentPerStatusDTO> cantidadIncidentesPorEstado(){
+        List<String[]> filaLista = aS.quantityIncidentsPerStatus();
+        List<QuantityIncidentPerStatusDTO> dtoLista = new ArrayList<>();
+        for(String[] columna: filaLista){
+            QuantityIncidentPerStatusDTO dto = new QuantityIncidentPerStatusDTO();
+            dto.setNameIncident(columna[0]);
+            dto.setStatus(columna[1]);
+            dto.setQuantity(Integer.parseInt(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
     public void eliminar(@PathVariable("id") Integer id){

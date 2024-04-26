@@ -10,7 +10,5 @@ public interface IDegreeServices {
     public List<Degree> list();
     public void delete(int id);
     public void update(Degree degree);
-    public List<String[]> quantityUserByCarrer();
-
 
 }

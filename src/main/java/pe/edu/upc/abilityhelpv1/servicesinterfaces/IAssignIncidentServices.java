@@ -16,5 +16,5 @@ public interface IAssignIncidentServices {
     public List<String[]> AssignIncidentsCount();
     public List<String[]>quantityStudentIncidents();
     public List<String[]>quantityIncidentsPerMonth(int year);
-
+    public List<String[]>quantityIncidentsPerStatus();
 }

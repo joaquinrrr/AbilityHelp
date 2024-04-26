@@ -1,15 +1,15 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
-public class StudentByDegreeDTO {
-    private String nameDegree;
+public class QuantityUserPerRolDTO {
+    private String nameR;
     private int quantity;
 
-    public String getNameDegree() {
-        return nameDegree;
+    public String getNameR() {
+        return nameR;
     }
 
-    public void setNameDegree(String nameDegree) {
-        this.nameDegree = nameDegree;
+    public void setNameR(String nameR) {
+        this.nameR = nameR;
     }
 
     public int getQuantity() {

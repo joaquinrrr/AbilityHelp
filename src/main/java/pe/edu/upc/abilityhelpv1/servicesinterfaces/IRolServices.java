@@ -11,5 +11,5 @@ public interface IRolServices {
     public void delete(int id);
     public Rol listarId(int idRol);
     public void update(Rol rol);
-
+    public List<String[]> quantityUserPerRol();
 }

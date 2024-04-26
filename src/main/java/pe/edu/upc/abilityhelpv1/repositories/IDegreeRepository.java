@@ -10,7 +10,4 @@ import java.util.List;
 
 @Repository
 public interface IDegreeRepository extends JpaRepository<Degree, Integer> {
-    @Query(value = "select name_degree, count(*) as Quantity_User from degree \n" +
-            "group by name_degree", nativeQuery = true)
-    public List<String[]> quantityUserByCarrer();
 }

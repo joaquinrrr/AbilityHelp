@@ -36,4 +36,10 @@ public interface IAssignIncidentRepository extends JpaRepository<AssignIncident,
     public List<String[]>quantityIncidentsPerMonth(@RequestParam int year);
 
 
+    @Query(value = "select inc.type_incident as Tipo_Incidente, assi.status as Estado, count(*) Quantity from assign_incident as assi \n" +
+            "inner join incidents as inc ON inc.id = assi.type_incident \n" +
+            "group by inc.type_incident, assi.status ", nativeQuery = true)
+    public List<String[]>quantityIncidentsPerStatus();
+
+
 }

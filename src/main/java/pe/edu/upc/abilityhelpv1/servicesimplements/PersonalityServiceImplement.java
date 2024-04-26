@@ -29,9 +29,4 @@ public class PersonalityServiceImplement implements IPersonalityServices {
     public void update(Personalities personalities) {
         sR.save(personalities);
     }
-
-    @Override
-    public List<String[]> quantityUserPerPersonality(String name) {
-        return sR.quantityUserPerPersonality(name);
-    }
 }

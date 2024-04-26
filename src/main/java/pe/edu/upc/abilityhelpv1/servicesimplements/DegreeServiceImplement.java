@@ -33,8 +33,4 @@ public class DegreeServiceImplement implements IDegreeServices {
         sR.save(degree);
     }
 
-    @Override
-    public List<String[]> quantityUserByCarrer() {
-        return sR.quantityUserByCarrer();
-    }
 }

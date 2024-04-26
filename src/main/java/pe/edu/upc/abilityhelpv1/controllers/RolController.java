@@ -3,12 +3,12 @@ package pe.edu.upc.abilityhelpv1.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.abilityhelpv1.dtos.PersonalitiesDTO;
+import pe.edu.upc.abilityhelpv1.dtos.QuantityUserPerRolDTO;
 import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
-import pe.edu.upc.abilityhelpv1.entities.Personalities;
 import pe.edu.upc.abilityhelpv1.entities.Rol;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IRolServices;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,5 +49,18 @@ public class RolController {
         ModelMapper m = new ModelMapper();
         RolDTO dto = m.map(sS.listarId(id), RolDTO.class);
         return dto;
+    }
+
+    @GetMapping("/cantidadUsuariosPorRol")
+    public List<QuantityUserPerRolDTO> cantidadUsuariosPorRol(){
+        List<String[]> filaLista = sS.quantityUserPerRol();
+        List<QuantityUserPerRolDTO> dtoLista = new ArrayList<>();
+        for(String[] columna: filaLista){
+            QuantityUserPerRolDTO dto = new QuantityUserPerRolDTO();
+            dto.setNameR(columna[0]);
+            dto.setQuantity(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }
