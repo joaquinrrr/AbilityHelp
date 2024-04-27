@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
 import pe.edu.upc.abilityhelpv1.entities.Rol;
-import pe.edu.upc.abilityhelpv1.servicesinterfaces.IRolServices;
 
 import java.util.List;
 import java.util.stream.Collectors;

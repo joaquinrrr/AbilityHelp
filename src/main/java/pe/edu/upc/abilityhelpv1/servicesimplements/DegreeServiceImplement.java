@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.abilityhelpv1.entities.Degree;
 import pe.edu.upc.abilityhelpv1.repositories.IDegreeRepository;
-import pe.edu.upc.abilityhelpv1.servicesinterfaces.IDegreeServices;
 
 import java.util.List;
 

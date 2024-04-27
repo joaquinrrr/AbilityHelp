@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.UserDTO;
 import pe.edu.upc.abilityhelpv1.entities.User;
-import pe.edu.upc.abilityhelpv1.servicesinterfaces.IUserServices;
 
 import java.util.List;
 import java.util.stream.Collectors;
