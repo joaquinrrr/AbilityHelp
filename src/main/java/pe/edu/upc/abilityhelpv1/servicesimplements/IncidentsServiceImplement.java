@@ -19,4 +19,8 @@ public class IncidentsServiceImplement implements IncidentServices{
     public List<Incidents> list() {
         return sR.findAll();
     }
+    @Override
+    public void delete(int id) {
+        sR.deleteById(id);
+    }
 }
