@@ -20,6 +20,15 @@ public class Rol implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    public Rol() {
+    }
+
+    public Rol(Long idRol, String rol, User user) {
+        this.idRol = idRol;
+        this.rol = rol;
+        this.user = user;
+    }
+
     public Long getIdRol() {
         return idRol;
     }
