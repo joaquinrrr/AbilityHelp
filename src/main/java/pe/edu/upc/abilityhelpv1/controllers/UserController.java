@@ -28,6 +28,7 @@ public class UserController {
         uS.insert(u);
     }
     @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN')")
     public void actualizar(@PathVariable("id") Long id, @RequestBody UserDTO u){
         ModelMapper m = new ModelMapper();
         Users uh = m.map(u, Users.class);

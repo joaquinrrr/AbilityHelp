@@ -8,5 +8,5 @@ public interface IncidentServices {
     public void insert(Incidents incidents);
     public List<Incidents> list();
     public void delete(int id);
-
+    public void update(Incidents incidents);
 }

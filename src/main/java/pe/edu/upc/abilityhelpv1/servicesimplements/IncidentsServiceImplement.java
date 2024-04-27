@@ -23,4 +23,9 @@ public class IncidentsServiceImplement implements IncidentServices{
     public void delete(int id) {
         sR.deleteById(id);
     }
+
+    @Override
+    public void update(Incidents incidents) {
+        sR.save(incidents);
+    }
 }

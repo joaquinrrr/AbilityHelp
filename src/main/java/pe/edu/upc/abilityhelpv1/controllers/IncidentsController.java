@@ -2,8 +2,11 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.abilityhelpv1.dtos.IncidentsDTO;
 import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
+import pe.edu.upc.abilityhelpv1.entities.Incidents;
 import pe.edu.upc.abilityhelpv1.entities.Rol;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IRolServices;
 
@@ -21,7 +24,13 @@ public class IncidentsController {
         Rol sh=m.map(s, Rol.class);
         sS.insert(sh);
     }
-
+    @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN')")
+    public void actualizar(@PathVariable("id") int id, @RequestBody IncidentsDTO i){
+        ModelMapper m = new ModelMapper();
+        Incidents ih = m.map(i, Incidents.class);
+        ih.setId_incident(id);
+    }
     @GetMapping("/listar")
     public List<RolDTO> list(){
         return sS.list().stream().map(y->{

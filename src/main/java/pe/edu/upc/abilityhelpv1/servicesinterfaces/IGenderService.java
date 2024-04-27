@@ -7,4 +7,5 @@ public interface IGenderService {
     public void insert(Gender gender);
     public List<Gender> list();
     public void delete(int id);
+    public void update(Gender gender);
 }
