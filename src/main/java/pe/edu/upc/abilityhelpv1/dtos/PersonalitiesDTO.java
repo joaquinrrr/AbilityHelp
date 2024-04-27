@@ -1,24 +1,30 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import pe.edu.upc.abilityhelpv1.entities.User;
+
 public class PersonalitiesDTO {
-    private int id_personality;
-    private String name;
+    private int idPersonality;
+    private String namePersonality;
     private String description;
 
-    public int getId_personality() {
-        return id_personality;
+    public int getIdPersonality() {
+        return idPersonality;
     }
 
-    public void setId_personality(int id_personality) {
-        this.id_personality = id_personality;
+    public void setIdPersonality(int idPersonality) {
+        this.idPersonality = idPersonality;
     }
 
-    public String getName() {
-        return name;
+    public String getNamePersonality() {
+        return namePersonality;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNamePersonality(String namePersonality) {
+        this.namePersonality = namePersonality;
     }
 
     public String getDescription() {
@@ -28,4 +34,5 @@ public class PersonalitiesDTO {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

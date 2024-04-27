@@ -1,22 +1,33 @@
 package pe.edu.upc.abilityhelpv1.dtos;
+import pe.edu.upc.abilityhelpv1.entities.User;
+
 
 public class RolDTO {
-    private int id_rol;
-    private String name;
+    private int idRol;
+    private String rol;
+    private User user;
 
-    public int getId_rol() {
-        return id_rol;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
-    public String getName() {
-        return name;
+    public String getRol() {
+        return rol;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
