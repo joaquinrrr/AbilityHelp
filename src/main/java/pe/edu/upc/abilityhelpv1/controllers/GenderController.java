@@ -21,7 +21,7 @@ public class GenderController {
         gS.insert(sh);
     }
 
-    @GetMapping //listar
+    @GetMapping ("/listar")//listar
     public List<GenderDTO> list(){
         return gS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();

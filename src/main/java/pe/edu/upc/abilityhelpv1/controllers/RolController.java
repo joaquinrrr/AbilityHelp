@@ -22,7 +22,7 @@ public class RolController {
         sS.insert(sh);
     }
 
-    @GetMapping //listar
+    @GetMapping ("/listar")
     public List<RolDTO> list(){
         return sS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();

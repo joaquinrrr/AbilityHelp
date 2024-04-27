@@ -22,7 +22,7 @@ public class PersonalitiesController {
         pS.insert(pe);
     }
 
-    @GetMapping("/listarP")
+    @GetMapping("/listar")
     @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN')")
     public List<PersonalitiesDTO> list(){
         return pS.list().stream().map(y->{
