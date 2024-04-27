@@ -1,24 +1,44 @@
 package pe.edu.upc.abilityhelpv1.securities;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 import java.io.Serializable;
 
-//Clase 7
-@Component
-public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
+/*
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    private static final long serialVersionUID = -7858869558953243875L;
+import java.io.Serializable;
 
-    @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response,
-                         AuthenticationException authException) throws IOException {
-
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+//Clase 4
+@Data
+@AllArgsConstructor
+@NoArgsConstructor*/
+public class JwtRequest implements Serializable {
+    private static final long serialVersionUID = 5926468583005150707L;
+    private String username;
+    private String password;
+    public JwtRequest() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    public JwtRequest(String username, String password) {
+        super();
+        this.username = username;
+        this.password = password;
+    }
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
