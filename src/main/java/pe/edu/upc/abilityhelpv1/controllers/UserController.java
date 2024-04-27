@@ -27,11 +27,11 @@ public class UserController {
         u.setPassword(encodedPassword);
         uS.insert(u);
     }
-    @PutMapping
-    public void modificar(@RequestBody UserDTO dto) {
+    @PutMapping("/{id}") // actualizar
+    public void actualizar(@PathVariable("id") Long id, @RequestBody UserDTO u){
         ModelMapper m = new ModelMapper();
-        Users u = m.map(dto, Users.class);
-        uS.insert(u);
+        Users uh = m.map(u, Users.class);
+        uh.setIdUser(id);
     }
 
     @DeleteMapping("/{id}")
@@ -39,12 +39,6 @@ public class UserController {
         uS.delete(id);
     }
 
-    @GetMapping("/{id}")
-    public UserDTO listarId(@PathVariable("id") Long id) {
-        ModelMapper m = new ModelMapper();
-        UserDTO dto = m.map(uS.listarId(id), UserDTO.class);
-        return dto;
-    }
 
     @GetMapping("/listar")
     @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN')")

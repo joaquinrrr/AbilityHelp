@@ -10,7 +10,7 @@ import java.util.List;
 public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUser;
     @Column(length = 30, unique = true)
     private String username;
     @Column(length = 50, unique = true)
@@ -24,6 +24,20 @@ public class Users implements Serializable {
     @JoinColumn(name = "user_id")
     private List<Rol> roles;
 
+    public Users(Long idUser, String username, String mail, String password, Integer age, Boolean enabled, List<Rol> roles) {
+        this.idUser = idUser;
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.age = age;
+        this.enabled = enabled;
+        this.roles = roles;
+    }
+
+    public Users() {
+
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -32,12 +46,12 @@ public class Users implements Serializable {
         this.age = age;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public String getUsername() {

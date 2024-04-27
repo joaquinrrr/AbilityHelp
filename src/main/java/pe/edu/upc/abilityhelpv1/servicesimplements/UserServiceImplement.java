@@ -30,4 +30,9 @@ public class UserServiceImplement implements IUserService{
     public Users listarId(Long idUsuario) {
         return uR.findById(idUsuario).orElse(new Users());
     }
+
+    @Override
+    public void update(Users user) {
+        uR.save(user);
+    }
 }

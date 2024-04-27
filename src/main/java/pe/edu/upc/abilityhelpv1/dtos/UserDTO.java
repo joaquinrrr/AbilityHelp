@@ -1,27 +1,19 @@
 package pe.edu.upc.abilityhelpv1.dtos;
 
 public class UserDTO {
-    private Long id;
+    private Long idUser;
     private String username;
     private String mail;
     private String password;
     private Integer age;
     private Boolean enabled;
 
-    public Integer getAge() {
-        return age;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public String getUsername() {
@@ -46,6 +38,14 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Boolean getEnabled() {
