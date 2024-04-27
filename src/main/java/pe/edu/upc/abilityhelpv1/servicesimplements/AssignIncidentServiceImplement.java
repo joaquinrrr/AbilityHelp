@@ -31,4 +31,8 @@ public class AssignIncidentServiceImplement implements IAssignIncidentService {
     public void update(AssignIncident assignIncident) {
         aR.save(assignIncident);
     }
+    @Override
+    public List<String[]> AssignIncidentByStudent(String name) {
+        return aR.AssignIncidentByStudent(name);
+    }
 }
