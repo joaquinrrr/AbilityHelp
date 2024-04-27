@@ -36,7 +36,8 @@ public class UserController {
         ModelMapper m = new ModelMapper();
         User uh = m.map(u, User.class);
         uh.setIdUser(id); // asegurarse de que el objeto tenga el mismo ID que el proporcionado en la URL
-        sS.update(uh);}
+        sS.update(uh);
+    }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
     public void eliminar(@PathVariable("id") Integer id){
