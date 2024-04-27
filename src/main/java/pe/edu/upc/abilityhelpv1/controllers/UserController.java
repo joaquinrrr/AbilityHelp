@@ -47,7 +47,7 @@ public class UserController {
     public UserDTO listarId(@PathVariable("id") int id) {
         ModelMapper m = new ModelMapper();
         UserDTO dto = m.map(sS.listarId(id), UserDTO.class);
-        return dto;
+        return    dto;
     }
 
 }
