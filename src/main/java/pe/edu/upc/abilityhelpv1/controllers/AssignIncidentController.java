@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.*;
 import pe.edu.upc.abilityhelpv1.entities.AssignIncident;
@@ -40,6 +41,7 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/incidentesPorUsuario")
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH','STUDENT')") //manejar la auth de USER
     public List<AssignIncidentByStudentDTO> incidentesPorEstudiante(@RequestParam String name){
         List<String[]> filaLista = aS.AssignIncidentByStudent(name);
         List<AssignIncidentByStudentDTO> dtoLista = new ArrayList<>();
@@ -55,6 +57,7 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/incidentesOcurridos")
+    @PreAuthorize("hasAnyAuthority('COACH','ADMIN') and !hasAnyAuthority('STUDENT')") //manejar la auth de USER
     public List<AssignIncidentCountDTO> cantidadIncidentesOcurridos(){
         List<String[]> filaLista = aS.AssignIncidentsCount();
         List<AssignIncidentCountDTO> dtoLista = new ArrayList<>();
@@ -68,6 +71,7 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/cantidadUsuarioIncidentes")
+    @PreAuthorize("hasAnyAuthority('COACH','STUDENT') and !hasAnyAuthority('ADMIN')") //manejar la auth de USER
     public List<QuantityStudentIncidentDTO> cantidadEstudianteIncidentes(){
         List<String[]> filaLista = aS.quantityStudentIncidents();
         List<QuantityStudentIncidentDTO> dtoLista = new ArrayList<>();
@@ -81,6 +85,7 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/cantidadIncidentesPorMes")
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH','STUDENT')") //manejar la auth de USER
     public List<QuantityIncidentsPerMonthDTO> cantidadIncidentesPorMes(@RequestParam int year){
         List<String[]> filaLista = aS.quantityIncidentsPerMonth(year);
         List<QuantityIncidentsPerMonthDTO> dtoLista = new ArrayList<>();

@@ -2,11 +2,15 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.DegreeDTO;
+import pe.edu.upc.abilityhelpv1.dtos.InteractionWithStudentDTO;
+import pe.edu.upc.abilityhelpv1.dtos.QuantityDegreePersonalityUserDTO;
 import pe.edu.upc.abilityhelpv1.entities.Degree;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IDegreeServices;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,6 +45,21 @@ public class DegreeController {
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
+    }
+
+    @GetMapping("/cantidadPersonalidadyCarreraEstudiante")
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH','STUDENT')") //manejar la auth de USER
+    public List<QuantityDegreePersonalityUserDTO> cantidadPersonalidadyCarreraEstudiante(){
+        List<String[]> filaLista = sS.quantityPersonalityDegreeUser();
+        List<QuantityDegreePersonalityUserDTO> dtoLista = new ArrayList<>();
+        for(String[] columna: filaLista){
+            QuantityDegreePersonalityUserDTO dto = new QuantityDegreePersonalityUserDTO();
+            dto.setQuantity(Integer.parseInt(columna[0]));
+            dto.setPersonaltity(columna[1]);
+            dto.setDegree(columna[2]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 
 }

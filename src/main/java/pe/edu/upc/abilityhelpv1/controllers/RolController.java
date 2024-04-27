@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.QuantityUserPerRolDTO;
 import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
@@ -33,6 +34,7 @@ public class RolController {
     }
 
     @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
     public void actualizar(@PathVariable("id") Long id, @RequestBody RolDTO re){
         ModelMapper m = new ModelMapper();
         Rol rh = m.map(re, Rol.class);
@@ -41,6 +43,7 @@ public class RolController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }
@@ -52,6 +55,7 @@ public class RolController {
     }
 
     @GetMapping("/cantidadUsuariosPorRol")
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
     public List<QuantityUserPerRolDTO> cantidadUsuariosPorRol(){
         List<String[]> filaLista = sS.quantityUserPerRol();
         List<QuantityUserPerRolDTO> dtoLista = new ArrayList<>();

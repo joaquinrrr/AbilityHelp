@@ -31,4 +31,17 @@ public interface IMeetRepository extends JpaRepository<Meeting, Integer> {
             "WHERE date_part('year', s.week_day) =:year \n" +
             "GROUP BY mes", nativeQuery = true)
     public List<String[]> quantityMeetsPerMonth(@Param("year") int year);
+
+    @Query(value = "SELECT u.username, AVG(num_reuniones) AS promedio_reuniones \n" +
+            "FROM ( \n" +
+            "    SELECT u.id_user, COUNT(*) AS num_reuniones\n" +
+            "    FROM meeting AS m \n" +
+            "    INNER JOIN user_table AS u ON u.id_user = m.student_id \n" +
+            "    GROUP BY u.id_user \n" +
+            ") AS reuniones_por_usuario \n" +
+            "JOIN user_table AS u ON reuniones_por_usuario.id_user = u.id_user \n" +
+            "GROUP BY u.username ", nativeQuery = true)
+    public List<String[]> averageMeetUser();
+
+
 }

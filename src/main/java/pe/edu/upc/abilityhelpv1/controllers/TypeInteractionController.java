@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.ScheduleDTO;
 import pe.edu.upc.abilityhelpv1.dtos.TypeInteractionDTO;
@@ -18,6 +19,7 @@ public class TypeInteractionController {
     @Autowired
     private ITypeInteractionServices tS;
     @PostMapping ("/Registro")//registrar
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('STUDENT','COACH')") //manejar la auth de USER
     public void registrar(@RequestBody TypeInteractionDTO typeDTO){
         ModelMapper m = new ModelMapper();
         TypeInteraction us=m.map(typeDTO, TypeInteraction.class);
@@ -33,6 +35,7 @@ public class TypeInteractionController {
     }
 
     @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('STUDENT','COACH')") //manejar la auth de USER
     public void actualizar(@PathVariable("id") Integer id, @RequestBody TypeInteractionDTO ti){
         ModelMapper m = new ModelMapper();
         TypeInteraction th = m.map(ti, TypeInteraction.class);
@@ -41,6 +44,7 @@ public class TypeInteractionController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('STUDENT','COACH')") //manejar la auth de USER
     public void eliminar(@PathVariable("id") Integer id){
         tS.delete(id);
     }

@@ -16,5 +16,7 @@ public interface IMeetServices {
     public List<String[]> QuantityMeetPerCoach(String name);
     public List<String[]> meetingPerUserDate(LocalDate date);
     public List<String[]> quantityMeetsPerMonth(int year);
+    public List<String[]> averageMeetUser();
+
 
 }

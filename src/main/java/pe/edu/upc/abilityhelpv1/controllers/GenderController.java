@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.GenderDTO;
 import pe.edu.upc.abilityhelpv1.entities.Gender;
@@ -16,6 +17,7 @@ public class GenderController {
     @Autowired
     private IGenderServices sS;
     @PostMapping("/Registro") //registrar
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
     public void registrar(@RequestBody GenderDTO g){
         ModelMapper m = new ModelMapper();
         Gender ge=m.map(g, Gender.class);
@@ -30,6 +32,7 @@ public class GenderController {
         }).collect(Collectors.toList()); //lista de tipo Shoe
     }
     @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
     public void actualizar(@PathVariable("id") Integer id, @RequestBody GenderDTO g){
         ModelMapper m = new ModelMapper();
         Gender gh = m.map(g, Gender.class);
@@ -38,6 +41,7 @@ public class GenderController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
+    @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }

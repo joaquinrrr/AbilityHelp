@@ -46,4 +46,9 @@ public class MeetingServiceImplement implements IMeetServices {
     public List<String[]> quantityMeetsPerMonth(int year) {
         return sR.quantityMeetsPerMonth(year);
     }
+
+    @Override
+    public List<String[]> averageMeetUser() {
+        return sR.averageMeetUser();
+    }
 }

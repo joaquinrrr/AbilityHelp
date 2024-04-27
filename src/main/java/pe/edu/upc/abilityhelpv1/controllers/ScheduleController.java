@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.RolDTO;
 import pe.edu.upc.abilityhelpv1.dtos.ScheduleDTO;
@@ -20,6 +21,7 @@ public class    ScheduleController {
     @Autowired
     private IScheduleServices sS;
     @PostMapping("/Registro") //registrar
+    @PreAuthorize("hasAnyAuthority('COACH') and !hasAnyAuthority('ADMIN', 'STUDENT')") //manejar la auth de USER
     public void registrar(@RequestBody ScheduleDTO s){
         ModelMapper m = new ModelMapper();
         Schedule sh=m.map(s, Schedule.class);
@@ -35,6 +37,7 @@ public class    ScheduleController {
     }
 
     @PutMapping("/{id}") // actualizar
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAnyAuthority('STUDENT')") //manejar la auth de USER
     public void actualizar(@PathVariable("id") Integer id, @RequestBody ScheduleDTO se){
         ModelMapper m = new ModelMapper();
         Schedule sh = m.map(se, Schedule.class);
@@ -43,6 +46,7 @@ public class    ScheduleController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
+    @PreAuthorize("hasAnyAuthority('COACH', 'ADMIN') and !hasAnyAuthority('STUDENT')") //manejar la auth de USER
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }

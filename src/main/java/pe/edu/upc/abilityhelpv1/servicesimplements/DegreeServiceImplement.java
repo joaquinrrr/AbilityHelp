@@ -33,4 +33,9 @@ public class DegreeServiceImplement implements IDegreeServices {
         sR.save(degree);
     }
 
+    @Override
+    public List<String[]> quantityPersonalityDegreeUser() {
+        return sR.quantityPersonalityDegreeUser();
+    }
+
 }
