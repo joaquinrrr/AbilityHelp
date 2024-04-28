@@ -26,7 +26,7 @@ public class IncidentsServiceImplement implements IncidentServices{
 
     @Override
     public List<Incidents> findByIncident(String Type) {
-        return null;
+        return sR.findIncidentsBy(Type);
     }
 
 }
