@@ -40,4 +40,12 @@ public class IncidentController {
         return dto;
     }
 
+    @GetMapping("/busqueda")
+    public List<IncidentsDTO> buscarModelo(@RequestParam String modelo){
+
+        return sS.findByIncident(modelo).stream().map(y->{
+            ModelMapper m=new ModelMapper();
+            return m.map(y,AdminDTO.class);
+        }).collect(Collectors.toList());
+
 }
