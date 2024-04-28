@@ -7,4 +7,5 @@ public interface IncidentServices {
     public List<Incidents> list();
     public Incidents listId(int id);
     public void delete(int id);
+    public List<Incidents> findByIncident(String Type);
 }

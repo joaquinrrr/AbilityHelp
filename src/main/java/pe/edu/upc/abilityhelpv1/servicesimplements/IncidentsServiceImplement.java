@@ -24,4 +24,9 @@ public class IncidentsServiceImplement implements IncidentServices{
     @Override
     public void delete(int id) {sR.deleteById(id);    }
 
+    @Override
+    public List<Incidents> findByIncident(String Type) {
+        return null;
+    }
+
 }
