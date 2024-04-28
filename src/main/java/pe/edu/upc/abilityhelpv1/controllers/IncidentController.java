@@ -42,11 +42,11 @@ public class IncidentController {
     }
 
     @GetMapping("/Search")
-    public List<IncidentsDTO> SearchTypeIncident(@RequestParam String Type){
+    public List<IncidentsDTO> SearchTypeIncident(@RequestParam String Type) {
 
-        return sS.findByIncident(Type).stream().map(y->{
-            ModelMapper m=new ModelMapper();
-            return m.map(y,IncidentsDTO.class);
+        return sS.findByIncident(Type).stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, IncidentsDTO.class);
         }).collect(Collectors.toList());
-
+    }
 }
