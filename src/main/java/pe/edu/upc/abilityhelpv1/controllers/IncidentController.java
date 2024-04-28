@@ -1,5 +1,6 @@
 package pe.edu.upc.abilityhelpv1.controllers;
 
+import com.sun.jdi.Type;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,9 +42,9 @@ public class IncidentController {
     }
 
     @GetMapping("/Search")
-    public List<IncidentsDTO> buscarModelo(@RequestParam String modelo){
+    public List<IncidentsDTO> SearchTypeIncident(@RequestParam String Type){
 
-        return sS.findByIncident(modelo).stream().map(y->{
+        return sS.findByIncident(Type).stream().map(y->{
             ModelMapper m=new ModelMapper();
             return m.map(y,IncidentsDTO.class);
         }).collect(Collectors.toList());
