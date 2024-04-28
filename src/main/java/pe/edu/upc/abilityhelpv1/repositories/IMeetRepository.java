@@ -1,5 +1,6 @@
 package pe.edu.upc.abilityhelpv1.repositories;
 
+import org.springframework.cglib.core.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -7,6 +8,7 @@ import pe.edu.upc.abilityhelpv1.entities.Meeting;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface IMeetRepository extends JpaRepository<Meeting, Integer> {
@@ -17,7 +19,7 @@ public interface IMeetRepository extends JpaRepository<Meeting, Integer> {
             "group by us.username, s.week_day", nativeQuery = true)
     public List<String[]> QuantityMeetPerCoach(@Param("name") String name);
 
-    @Query(value = "select us.username as Name, sc.week_day as Date , sc.start_hour, sc.finish_hour  from meeting as me \n" +
+    @Query(value = "select us.username as Name, sc.week_day as Date_Meet , sc.start_hour, sc.finish_hour  from meeting as me \n" +
             "inner join user_table as us ON us.id_user = me.student_id \n" +
             "inner join schedule as sc ON sc.id_schedule = me.id_schedule \n" +
             "where sc.week_day =:date \n" +

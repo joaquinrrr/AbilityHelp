@@ -7,6 +7,7 @@ import pe.edu.upc.abilityhelpv1.repositories.IMeetRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 @Service
 public class MeetingServiceImplement implements IMeetServices {

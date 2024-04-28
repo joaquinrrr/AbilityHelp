@@ -11,7 +11,9 @@ import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,17 +63,17 @@ public class MeetingController {
         return dtoLista;
     }
     @GetMapping("/reunionporUsuarioyFecha")
-    @PreAuthorize("hasAnyAuthority('COACH','STUDENT') and !hasAnyAuthority('ADMIN')") //manejar la auth de USER
     public List<MeetingPerStudentDateDTO> reunionporUsuarioyFecha(@RequestParam LocalDate date){
         List<String[]> filaLista = mS.meetingPerUserDate(date);
         List<MeetingPerStudentDateDTO> dtoLista = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-        for(String[] columna: filaLista){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+        for (String[] columna : filaLista) {
             MeetingPerStudentDateDTO dto = new MeetingPerStudentDateDTO();
             dto.setNameU(columna[0]);
             dto.setDate(LocalDate.parse(columna[1]));
-            dto.setStarthour(LocalDateTime.parse(columna[2], formatter));
-            dto.setFinishhour(LocalDateTime.parse(columna[3], formatter));
+            dto.setStarthour(LocalDateTime.parse(columna[2],formatter2));  // assuming time not available
+            dto.setFinishhour(LocalDateTime.parse(columna[3],formatter2));  // assuming time not available
             dtoLista.add(dto);
         }
         return dtoLista;

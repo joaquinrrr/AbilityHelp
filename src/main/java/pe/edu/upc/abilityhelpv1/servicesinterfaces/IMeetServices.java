@@ -5,6 +5,7 @@ import pe.edu.upc.abilityhelpv1.entities.Interaction;
 import pe.edu.upc.abilityhelpv1.entities.Meeting;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface IMeetServices {
