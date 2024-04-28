@@ -23,5 +23,8 @@ public class PersonalityServiceImplement implements IPersonalityServices {
     @Override
     public Personalities listId(int id) {return sR.findById(id).orElse(new Personalities());}
 
+    @Override
+    public void delete(int id) {sR.deleteById(id);    }
+
     public Personalities ListId(int id){return sR.findById(id).orElse(new Personalities());}
 }

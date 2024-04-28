@@ -8,4 +8,5 @@ public interface IPersonalityServices {
     public void insert(Personalities personalities);
     public List<Personalities> list();
     public Personalities listId(int id);
+    public void delete(int id);
 }
