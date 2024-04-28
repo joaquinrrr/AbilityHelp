@@ -6,4 +6,5 @@ public interface IncidentServices {
     public void insert(Incidents incidents);
     public List<Incidents> list();
     public Incidents listId(int id);
+    public void delete(int id);
 }

@@ -7,6 +7,9 @@ import pe.edu.upc.abilityhelpv1.dtos.IncidentsDTO;
 import pe.edu.upc.abilityhelpv1.entities.Incidents;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IncidentServices;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("Incident")
 public class IncidentController {
@@ -18,10 +21,22 @@ public class IncidentController {
         Incidents Ih=I.map(s,Incidents.class);
         sS.insert(Ih);
     }
-    @GetMapping("{Id}")
-    public IncidentsDTO listarId(@PathVariable("id")Integer id){
-        ModelMapper I=new ModelMapper();
-        IncidentsDTO dto=I.map(sS.listId(id),IncidentsDTO.class);
+    @GetMapping
+    public List<IncidentsDTO> list() {
+        return sS.list().stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, IncidentsDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        sS.delete(id);
+    }
+    @GetMapping("/{id}")
+    public IncidentsDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m= new ModelMapper();
+        IncidentsDTO dto=m.map(sS.listId(id),IncidentsDTO.class);
         return dto;
     }
 

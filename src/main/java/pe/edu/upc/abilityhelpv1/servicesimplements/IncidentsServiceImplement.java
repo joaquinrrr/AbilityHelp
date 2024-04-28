@@ -20,4 +20,8 @@ public class IncidentsServiceImplement implements IncidentServices{
     }
     @Override
     public Incidents listId(int id) {return sR.findById(id).orElse(new Incidents());}
+
+    @Override
+    public void delete(int id) {sR.deleteById(id);    }
+
 }
