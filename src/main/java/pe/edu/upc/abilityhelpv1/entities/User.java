@@ -1,55 +1,61 @@
 package pe.edu.upc.abilityhelpv1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import javax.management.relation.Role;
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
-@Table(name = "User-help")
-public class User {
+@Table(name = "UserTable")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
-    @Column(name = "nameUser", nullable = false, length = 35)
-    private String nameUser;
-    @Column(name = "emailUser", nullable = false, length = 35)
+    private Long idUser;
+    @Column(name = "username", nullable = false, length = 35)
+    private String username;
+    @Column(name = "email", nullable = false, length = 35)
     private String emailUser;
-    @Column(name = "passwordUser", nullable = false, length = 35)
-    private String passwordUser;
-    @Column(name = "ageUser", nullable = false, length = 2)
+    @Column(name = "password", nullable = false, length = 200)
+    private String password;
+    @Column(name = "age", nullable = false, length = 2)
     private int ageUser;
-    @ManyToOne
-    @JoinColumn(name = "rolid")
-    private Rol rol;
-    @ManyToOne
-    @JoinColumn(name = "degreeid")
-    private Degree degree;
+    private Boolean enabled;
+    // En User.java
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    @JsonIgnore
+    private List<Rol> rol;
 
     public User() {
     }
 
-    public User(int idUser, String nameUser, String emailUser, String passwordUser, int ageUser, Rol rol, Degree degree) {
+    public User(Long idUser, String username, String emailUser, String password, int ageUser, Boolean enabled, List<Rol> rol) {
         this.idUser = idUser;
-        this.nameUser = nameUser;
+        this.username = username;
         this.emailUser = emailUser;
-        this.passwordUser = passwordUser;
+        this.password = password;
         this.ageUser = ageUser;
+        this.enabled = enabled;
+
         this.rol = rol;
-        this.degree = degree;
     }
 
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmailUser() {
@@ -60,12 +66,12 @@ public class User {
         this.emailUser = emailUser;
     }
 
-    public String getPasswordUser() {
-        return passwordUser;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordUser(String passwordUser) {
-        this.passwordUser = passwordUser;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getAgeUser() {
@@ -76,19 +82,19 @@ public class User {
         this.ageUser = ageUser;
     }
 
-    public Rol getRol() {
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Rol> getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(List<Rol> rol) {
         this.rol = rol;
-    }
-
-    public Degree getDegree() {
-        return degree;
-    }
-
-    public void setDegree(Degree degree) {
-        this.degree = degree;
     }
 }
