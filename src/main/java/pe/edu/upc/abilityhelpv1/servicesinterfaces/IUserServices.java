@@ -7,10 +7,10 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 import java.util.List;
 
 public interface IUserServices {
-    public void insert(User user);
+    User insert(User user);
     public List<User> list();
     public void delete(Long id);
     public User listarId(Long idUsuario);
     public void update(User user);
-
+    public List<User> listByRole(String roleName);
 }

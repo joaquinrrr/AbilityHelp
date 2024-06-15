@@ -21,5 +21,6 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "insert into rol (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);*/
-
+    @Query("SELECT u FROM User u JOIN u.rol r WHERE r.rol = :roleName")
+    List<User> findByRoleName(@Param("roleName") String roleName);
 }

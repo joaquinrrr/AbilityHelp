@@ -2,6 +2,8 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.UserDTO;
@@ -20,13 +22,15 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping
-    public void registrar(@RequestBody UserDTO dto) {
+    @PostMapping("/Registro")
+    public ResponseEntity<UserDTO> registrar(@RequestBody UserDTO userDTO) {
         ModelMapper m = new ModelMapper();
-        User u = m.map(dto, User.class);
-        String encodedPassword = passwordEncoder.encode(u.getPassword());
-        u.setPassword(encodedPassword);
-        sS.insert(u);
+        User us = m.map(userDTO, User.class);
+        String encodedPassword = passwordEncoder.encode(us.getPassword());
+        us.setPassword(encodedPassword);
+        User newUser = sS.insert(us);
+        UserDTO userResponse = m.map(newUser, UserDTO.class);
+        return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
 
     @GetMapping //listar
@@ -55,5 +59,11 @@ public class UserController {
         UserDTO dto = m.map(sS.listarId(id), UserDTO.class);
         return dto;
     }
-
+    @GetMapping("/role/{roleName}")
+    public List<UserDTO> listByRole(@PathVariable("roleName") String roleName) {
+        return sS.listByRole(roleName).stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, UserDTO.class);
+        }).collect(Collectors.toList());
+    }
 }

@@ -21,10 +21,9 @@ public class UserServiceImplement implements IUserServices {
     @Autowired
     private IUserRepository sR;
     @Override
-    public void insert(User user) {
-        sR.save(user);
+    public User insert(User user) {
+        return sR.save(user); // Devuelve el usuario creado
     }
-
     @Override
     public List<User> list() {
         return sR.findAll();
@@ -41,7 +40,10 @@ public class UserServiceImplement implements IUserServices {
     public void update(User user) {
         sR.save(user);
     }
-
+    @Override
+    public List<User> listByRole(String roleName) {
+        return sR.findByRoleName(roleName);
+    }
 
 
 }

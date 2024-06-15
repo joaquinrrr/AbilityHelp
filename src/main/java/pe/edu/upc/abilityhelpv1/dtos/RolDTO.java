@@ -3,15 +3,15 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 
 
 public class RolDTO {
-    private int idRol;
+    private Long idRol;
     private String rol;
     private User user;
 
-    public int getIdRol() {
+    public Long getIdRol() {
         return idRol;
     }
 
-    public void setIdRol(int idRol) {
+    public void setIdRol(Long idRol) {
         this.idRol = idRol;
     }
 

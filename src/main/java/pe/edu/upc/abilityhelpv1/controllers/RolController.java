@@ -44,11 +44,11 @@ public class RolController {
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
     @PreAuthorize("hasAnyAuthority('ADMIN') and !hasAnyAuthority('COACH', 'STUDENT')") //manejar la auth de USER
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Long id){
         sS.delete(id);
     }
     @GetMapping("/{id}")
-    public RolDTO listarId(@PathVariable("id") int id) {
+    public RolDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
         RolDTO dto = m.map(sS.listarId(id), RolDTO.class);
         return dto;
