@@ -64,4 +64,11 @@ public class InteractionController {
     public void eliminar(@PathVariable("id") Integer id){
         iS.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public InteractionDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        InteractionDTO dto = m.map(iS.listarId(id), InteractionDTO.class);
+        return dto;
+    }
 }

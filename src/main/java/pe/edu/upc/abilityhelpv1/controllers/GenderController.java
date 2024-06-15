@@ -46,4 +46,10 @@ public class GenderController {
         sS.delete(id);
     }
 
+    @GetMapping("/{id}")
+    public GenderDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        GenderDTO dto = m.map(sS.listarId(id), GenderDTO.class);
+        return dto;
+    }
 }

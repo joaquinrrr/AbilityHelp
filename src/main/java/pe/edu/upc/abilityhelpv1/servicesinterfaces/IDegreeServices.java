@@ -12,5 +12,6 @@ public interface IDegreeServices {
     public void update(Degree degree);
     public List<String[]> quantityPersonalityDegreeUser();
 
+    public Degree listarId(int idDegree);
 
 }

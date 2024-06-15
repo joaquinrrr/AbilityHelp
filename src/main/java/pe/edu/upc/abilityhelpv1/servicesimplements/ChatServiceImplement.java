@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.abilityhelpv1.entities.AssignIncident;
 import pe.edu.upc.abilityhelpv1.entities.Chat;
 import pe.edu.upc.abilityhelpv1.repositories.IChatRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IChatServices;
@@ -31,5 +32,10 @@ public class ChatServiceImplement implements IChatServices {
     @Override
     public void update(Chat chat) {
         cR.save(chat);
+    }
+
+    @Override
+    public Chat listarId(int idChat) {
+        return cR.findById(idChat).orElse(new Chat());
     }
 }

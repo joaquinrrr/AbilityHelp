@@ -8,8 +8,8 @@ import java.util.List;
 public interface IRolServices {
     public void insert(Rol rol);
     public List<Rol> list();
-    public void delete(int id);
-    public Rol listarId(int idRol);
+    public void delete(Long id);
+    public Rol listarId(Long idRol);
     public void update(Rol rol);
     public List<String[]> quantityUserPerRol();
 }

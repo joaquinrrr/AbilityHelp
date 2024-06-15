@@ -13,7 +13,7 @@ public class ScheduleDTO {
     private LocalDate  weekDay;
     private LocalDateTime startHour;
     private LocalDateTime finishHour;
-    private User coachUser;
+    private User userCoach;
 
     public int getIdSchedule() {
         return idSchedule;
@@ -47,11 +47,11 @@ public class ScheduleDTO {
         this.finishHour = finishHour;
     }
 
-    public User getCoachUser() {
-        return coachUser;
+    public User getUserCoach() {
+        return userCoach;
     }
 
-    public void setCoachUser(User coachUser) {
-        this.coachUser = coachUser;
+    public void setUserCoach(User userCoach) {
+        this.userCoach = userCoach;
     }
 }

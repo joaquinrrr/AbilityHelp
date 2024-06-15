@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.abilityhelpv1.entities.Interaction;
 import pe.edu.upc.abilityhelpv1.entities.Meeting;
 import pe.edu.upc.abilityhelpv1.repositories.IMeetRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IMeetServices;
@@ -51,5 +52,10 @@ public class MeetingServiceImplement implements IMeetServices {
     @Override
     public List<String[]> averageMeetUser() {
         return sR.averageMeetUser();
+    }
+
+    @Override
+    public Meeting listarId(int idMeeting) {
+        return sR.findById(idMeeting).orElse(new Meeting());
     }
 }

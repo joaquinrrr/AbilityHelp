@@ -111,4 +111,11 @@ public class MeetingController {
     public void eliminar(@PathVariable("id") Integer id){
         mS.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public MeetingDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        MeetingDTO dto = m.map(mS.listarId(id), MeetingDTO.class);
+        return dto;
+    }
 }

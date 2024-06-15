@@ -12,4 +12,6 @@ public interface ITypeInteractionServices {
     public List<TypeInteraction> list();
     public void delete(int id);
     public void update(TypeInteraction typeInteraction);
+    public TypeInteraction listarId(int idType);
+
 }

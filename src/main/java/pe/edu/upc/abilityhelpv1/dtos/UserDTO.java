@@ -9,20 +9,22 @@ import pe.edu.upc.abilityhelpv1.entities.Rol;
 import java.util.List;
 
 public class UserDTO {
-    private int idUser;
+    private Long idUser;
     private String username;
     private String emailUser;
     private String password;
     private int ageUser;
     private Boolean enabled;
+    // En User.java
     private Gender gender;
     private Personalities personality;
+    private List<Rol> roles;
 
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -80,5 +82,13 @@ public class UserDTO {
 
     public void setPersonality(Personalities personality) {
         this.personality = personality;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }

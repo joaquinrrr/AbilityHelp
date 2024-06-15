@@ -3,6 +3,7 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.abilityhelpv1.entities.Gender;
+import pe.edu.upc.abilityhelpv1.entities.User;
 import pe.edu.upc.abilityhelpv1.repositories.IGenderRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IGenderServices;
 
@@ -29,5 +30,10 @@ public class GenderServiceImplement implements IGenderServices {
     @Override
     public void update(Gender gender) {
         sR.save(gender);
+    }
+
+    @Override
+    public Gender listarId(int idGender) {
+        return sR.findById(idGender).orElse(new Gender());
     }
 }

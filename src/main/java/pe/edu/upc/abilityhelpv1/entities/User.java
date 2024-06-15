@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import javax.management.relation.Role;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,25 +30,9 @@ public class User implements Serializable {
     @ManyToOne
     @JoinColumn(name = "personality_id", nullable = false)
     private Personalities personality;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
     @JsonIgnore
-    private List<Rol> rol;
-
-    public User() {
-    }
-
-    public User(Long idUser, String username, String emailUser, String password, int ageUser, Boolean enabled, Gender gender, Personalities personality, List<Rol> rol) {
-        this.idUser = idUser;
-        this.username = username;
-        this.emailUser = emailUser;
-        this.password = password;
-        this.ageUser = ageUser;
-        this.enabled = enabled;
-        this.gender = gender;
-        this.personality = personality;
-        this.rol = rol;
-    }
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Rol> rol = new ArrayList<>();
 
     public Long getIdUser() {
         return idUser;

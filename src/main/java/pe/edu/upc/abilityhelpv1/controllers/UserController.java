@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.UserDTO;
 import pe.edu.upc.abilityhelpv1.entities.User;
@@ -16,11 +17,16 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private IUserServices sS;
-    @PostMapping ("/Registro")//registrar
-    public void registrar(@RequestBody UserDTO userDTO){
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @PostMapping
+    public void registrar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
-        User us=m.map(userDTO, User.class);
-        sS.insert(us);
+        User u = m.map(dto, User.class);
+        String encodedPassword = passwordEncoder.encode(u.getPassword());
+        u.setPassword(encodedPassword);
+        sS.insert(u);
     }
 
     @GetMapping //listar

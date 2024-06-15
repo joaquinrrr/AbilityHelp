@@ -9,4 +9,6 @@ public interface IPersonalityServices {
     public List<Personalities> list();
     public void delete(int id);
     public void update(Personalities personalities);
+    public Personalities listarId(int idPer);
+
 }

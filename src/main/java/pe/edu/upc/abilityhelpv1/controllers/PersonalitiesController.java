@@ -48,4 +48,11 @@ public class PersonalitiesController {
         sS.delete(id);
     }
 
+
+    @GetMapping("/{id}")
+    public PersonalitiesDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        PersonalitiesDTO dto = m.map(sS.listarId(id), PersonalitiesDTO.class);
+        return dto;
+    }
 }

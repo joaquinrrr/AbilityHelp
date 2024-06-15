@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.abilityhelpv1.entities.Incidents;
 import pe.edu.upc.abilityhelpv1.entities.Interaction;
 import pe.edu.upc.abilityhelpv1.repositories.IInteractionRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IInteractionServices;
@@ -34,5 +35,10 @@ public class InteractionServiceImplement implements IInteractionServices {
     @Override
     public List<String[]> interactionWithUsers() {
         return iR.interactionWithUsers();
+    }
+
+    @Override
+    public Interaction listarId(int idInteraction) {
+        return iR.findById(idInteraction).orElse(new Interaction());
     }
 }

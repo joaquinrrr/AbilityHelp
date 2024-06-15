@@ -11,5 +11,6 @@ public interface IInteractionServices {
     public void delete(int id);
     public void update(Interaction interaction);
     public List<String[]> interactionWithUsers();
+    public Interaction listarId(int idInteraction);
 
 }

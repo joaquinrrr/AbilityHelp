@@ -28,7 +28,7 @@ public class    ScheduleController {
         sS.insert(sh);
     }
 
-    @GetMapping("/ListaHorarios") //listar
+    @GetMapping//listar
     public List<ScheduleDTO> list(){
         return sS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -57,5 +57,12 @@ public class    ScheduleController {
             ModelMapper m = new ModelMapper();
             return m.map(y, ScheduleDTO.class); //expresion lambda para la transformacion
         }).collect(Collectors.toList()); //lista de tipo Shoe
+    }
+
+    @GetMapping("/{id}")
+    public ScheduleDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        ScheduleDTO dto = m.map(sS.listarId(id), ScheduleDTO.class);
+        return dto;
     }
 }

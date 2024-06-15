@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.abilityhelpv1.entities.Personalities;
+import pe.edu.upc.abilityhelpv1.entities.User;
 
 import java.util.List;
 

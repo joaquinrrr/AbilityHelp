@@ -48,4 +48,11 @@ public class TypeInteractionController {
     public void eliminar(@PathVariable("id") Integer id){
         tS.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public TypeInteractionDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        TypeInteractionDTO dto = m.map(tS.listarId(id), TypeInteractionDTO.class);
+        return dto;
+    }
 }

@@ -11,5 +11,6 @@ public interface IIncidentServices {
     public List<Incidents> list();
     public void delete(int id);
     public void update(Incidents incidents);
+    public Incidents listarId(int idIncident);
 
 }

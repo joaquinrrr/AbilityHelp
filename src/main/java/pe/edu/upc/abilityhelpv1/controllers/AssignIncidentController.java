@@ -17,23 +17,24 @@ import java.util.stream.Collectors;
 public class AssignIncidentController {
     @Autowired
     private IAssignIncidentServices aS;
+
     @PostMapping("/Registro") //registrar
-    public void registrar(@RequestBody AssignIncidentDTO a){
+    public void registrar(@RequestBody AssignIncidentDTO a) {
         ModelMapper m = new ModelMapper();
-        AssignIncident ch=m.map(a, AssignIncident.class);
+        AssignIncident ch = m.map(a, AssignIncident.class);
         aS.insert(ch);
     }
 
     @GetMapping //listar
-    public List<AssignIncidentDTO> list(){
-        return aS.list().stream().map(y->{
+    public List<AssignIncidentDTO> list() {
+        return aS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
             return m.map(y, AssignIncidentDTO.class); //expresion lambda para la transformacion
         }).collect(Collectors.toList()); //lista de tipo Shoe
     }
 
     @PutMapping("/{id}") // actualizar
-    public void actualizar(@PathVariable("id") Integer id, @RequestBody AssignIncidentDTO a){
+    public void actualizar(@PathVariable("id") Integer id, @RequestBody AssignIncidentDTO a) {
         ModelMapper m = new ModelMapper();
         AssignIncident ah = m.map(a, AssignIncident.class);
         ah.setId(id); // asegurarse de que el objeto tenga el mismo ID que el proporcionado en la URL
@@ -117,5 +118,12 @@ public class AssignIncidentController {
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
     public void eliminar(@PathVariable("id") Integer id){
         aS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public AssignIncidentDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        AssignIncidentDTO dto = m.map(aS.listarId(id), AssignIncidentDTO.class);
+        return dto;
     }
 }

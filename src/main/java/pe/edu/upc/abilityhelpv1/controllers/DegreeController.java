@@ -62,4 +62,10 @@ public class DegreeController {
         return dtoLista;
     }
 
+    @GetMapping("/{id}")
+    public DegreeDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        DegreeDTO dto = m.map(sS.listarId(id), DegreeDTO.class);
+        return dto;
+    }
 }

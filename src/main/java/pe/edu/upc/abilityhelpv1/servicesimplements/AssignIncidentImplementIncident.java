@@ -3,6 +3,7 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.abilityhelpv1.entities.AssignIncident;
+import pe.edu.upc.abilityhelpv1.entities.Gender;
 import pe.edu.upc.abilityhelpv1.repositories.IAssignIncidentRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IAssignIncidentServices;
 
@@ -30,6 +31,11 @@ public class AssignIncidentImplementIncident implements IAssignIncidentServices 
     @Override
     public void update(AssignIncident assignIncident) {
         aR.save(assignIncident);
+    }
+
+    @Override
+    public AssignIncident listarId(int idAssing) {
+        return aR.findById(idAssing).orElse(new AssignIncident());
     }
 
     @Override

@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.abilityhelpv1.entities.Gender;
 import pe.edu.upc.abilityhelpv1.entities.Incidents;
 import pe.edu.upc.abilityhelpv1.repositories.IIncidentsRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IIncidentServices;
@@ -14,7 +15,7 @@ public class IncidentServiceImplement implements IIncidentServices {
 
     @Override
     public void insert(Incidents incidents) {
-       iR.save(incidents);
+        iR.save(incidents);
     }
 
     @Override
@@ -30,5 +31,10 @@ public class IncidentServiceImplement implements IIncidentServices {
     @Override
     public void update(Incidents incidents) {
         iR.save(incidents);
+    }
+
+    @Override
+    public Incidents listarId(int idIncident) {
+        return iR.findById(idIncident).orElse(new Incidents());
     }
 }

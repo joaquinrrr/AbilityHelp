@@ -1,6 +1,7 @@
 package pe.edu.upc.abilityhelpv1.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.abilityhelpv1.entities.Rol;
 import pe.edu.upc.abilityhelpv1.entities.Schedule;
 import pe.edu.upc.abilityhelpv1.repositories.IScheduleRepository;
 import pe.edu.upc.abilityhelpv1.servicesinterfaces.IScheduleServices;
@@ -34,6 +35,11 @@ public class ScheduleServiceImplement implements IScheduleServices {
     @Override
     public void update(Schedule schedule) {
         sR.save(schedule);
+    }
+
+    @Override
+    public Schedule listarId(int idSch) {
+        return sR.findById(idSch).orElse(new Schedule());
     }
 
 }

@@ -9,7 +9,7 @@ import pe.edu.upc.abilityhelpv1.entities.Rol;
 import java.util.List;
 
 @Repository
-public interface IRolRepository extends JpaRepository<Rol,Integer> {
+public interface IRolRepository extends JpaRepository<Rol,Long> {
 
     @Query(value = "select r.rol , count(*) from rol as r \n" +
             "inner join user_table as us ON us.id_user = r.user_id \n" +

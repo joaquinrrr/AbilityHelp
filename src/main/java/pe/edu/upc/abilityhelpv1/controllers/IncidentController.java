@@ -45,4 +45,11 @@ public class IncidentController {
     public void eliminar(@PathVariable("id") Integer id){
         iS.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public IncidentDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        IncidentDTO dto = m.map(iS.listarId(id), IncidentDTO.class);
+        return dto;
+    }
 }

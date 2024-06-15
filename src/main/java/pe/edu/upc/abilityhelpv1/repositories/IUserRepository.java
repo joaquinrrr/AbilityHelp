@@ -11,7 +11,7 @@ import pe.edu.upc.abilityhelpv1.entities.User;
 import java.util.List;
 
 @Repository
-public interface IUserRepository extends JpaRepository<User, Integer> {
+public interface IUserRepository extends JpaRepository<User, Long> {
 
     public User findByUsername(String nameUser);
 
