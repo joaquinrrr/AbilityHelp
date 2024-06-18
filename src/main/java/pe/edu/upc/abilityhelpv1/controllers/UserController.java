@@ -66,4 +66,14 @@ public class UserController {
             return m.map(y, UserDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @GetMapping("/nombreusuario")
+    public UserDTO encontraruser(@RequestParam String nombreuser){
+        ModelMapper m = new ModelMapper();
+        UserDTO dto = m.map(sS.finduser(nombreuser), UserDTO.class);
+        return dto;
+    }
+
+
+
 }

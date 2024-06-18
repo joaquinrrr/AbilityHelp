@@ -13,4 +13,6 @@ public interface IUserServices {
     public User listarId(Long idUsuario);
     public void update(User user);
     public List<User> listByRole(String roleName);
+
+    public User finduser(String username);
 }

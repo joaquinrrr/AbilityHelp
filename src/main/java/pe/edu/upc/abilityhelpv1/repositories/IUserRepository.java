@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.abilityhelpv1.entities.User;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long> {
@@ -23,4 +24,5 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);*/
     @Query("SELECT u FROM User u JOIN u.rol r WHERE r.rol = :roleName")
     List<User> findByRoleName(@Param("roleName") String roleName);
+
 }

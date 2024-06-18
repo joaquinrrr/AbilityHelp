@@ -45,5 +45,10 @@ public class UserServiceImplement implements IUserServices {
         return sR.findByRoleName(roleName);
     }
 
+    @Override
+    public User finduser(String username) {
+        return sR.findByUsername(username);
+    }
+
 
 }
