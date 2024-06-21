@@ -72,7 +72,7 @@ public class AssignIncidentController {
     }
 
     @GetMapping("/cantidadUsuarioIncidentes")
-    @PreAuthorize("hasAnyAuthority('COACH','STUDENT') and !hasAnyAuthority('ADMIN')") //manejar la auth de USER
+    //@PreAuthorize("hasAnyAuthority('COACH','STUDENT') and !hasAnyAuthority('ADMIN')") //manejar la auth de USER
     public List<QuantityStudentIncidentDTO> cantidadEstudianteIncidentes(){
         List<String[]> filaLista = aS.quantityStudentIncidents();
         List<QuantityStudentIncidentDTO> dtoLista = new ArrayList<>();
