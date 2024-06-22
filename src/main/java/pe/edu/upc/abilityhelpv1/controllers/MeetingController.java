@@ -2,6 +2,7 @@ package pe.edu.upc.abilityhelpv1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.abilityhelpv1.dtos.*;
@@ -63,7 +64,7 @@ public class MeetingController {
         return dtoLista;
     }
     @GetMapping("/reunionporUsuarioyFecha")
-    public List<MeetingPerStudentDateDTO> reunionporUsuarioyFecha(@RequestParam LocalDate date){
+    public List<MeetingPerStudentDateDTO> reunionporUsuarioyFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
         List<String[]> filaLista = mS.meetingPerUserDate(date);
         List<MeetingPerStudentDateDTO> dtoLista = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -107,7 +108,7 @@ public class MeetingController {
     }
 
     @DeleteMapping("/{id}") //reconozca parametros que estamos pasando
-    @PreAuthorize("hasAnyAuthority('STUDENT') and !hasAnyAuthority('COACH','ADMIN')") //manejar la auth de USER
+    //@PreAuthorize("hasAnyAuthority('STUDENT') and !hasAnyAuthority('COACH','ADMIN')") //manejar la auth de USER
     public void eliminar(@PathVariable("id") Integer id){
         mS.delete(id);
     }
