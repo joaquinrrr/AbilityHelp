@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Chat")
-@CrossOrigin(origins = "https://ab13-98315.web.app")
+@CrossOrigin(origins = {"https://ab13-98315.web.app","http://localhost:4200"})
 public class ChatController {
     @Autowired
     private IChatServices cS;

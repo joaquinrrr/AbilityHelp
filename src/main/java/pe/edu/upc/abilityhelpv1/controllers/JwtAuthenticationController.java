@@ -18,7 +18,7 @@ import pe.edu.upc.abilityhelpv1.servicesimplements.JwtUserDetailsService;
 
 //Clase 3
 @RestController
-@CrossOrigin(origins = "https://ab13-98315.web.app", allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = {"https://ab13-98315.web.app", "http://localhost:4200"}, allowedHeaders = "*", allowCredentials = "true")
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;

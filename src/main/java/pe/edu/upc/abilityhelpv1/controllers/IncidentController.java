@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Incident")
-@CrossOrigin(origins = "https://ab13-98315.web.app")
+@CrossOrigin(origins = {"https://ab13-98315.web.app","http://localhost:4200"})
 public class IncidentController {
     @Autowired
     private IIncidentServices iS;

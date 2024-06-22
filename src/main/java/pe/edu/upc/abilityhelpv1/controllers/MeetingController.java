@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/meeting")
-@CrossOrigin(origins = "https://ab13-98315.web.app")
+@CrossOrigin(origins = {"https://ab13-98315.web.app","http://localhost:4200"})
 public class MeetingController {
     @Autowired
     private IMeetServices mS;
