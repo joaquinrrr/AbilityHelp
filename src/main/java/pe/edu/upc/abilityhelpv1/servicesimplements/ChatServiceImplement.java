@@ -33,4 +33,9 @@ public class ChatServiceImplement implements IChatServices {
     public void update(Chat chat) {
         cR.save(chat);
     }
+
+    @Override
+    public Chat listarId(int idChat) {
+        return cR.findById(idChat).orElse(new Chat());
+    }
 }

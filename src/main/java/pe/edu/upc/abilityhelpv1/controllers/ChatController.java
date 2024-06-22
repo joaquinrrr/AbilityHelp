@@ -43,5 +43,11 @@ public class ChatController {
         cS.delete(id);
     }
 
+    @GetMapping("/{id}")
+    public ChatDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        ChatDTO dto = m.map(cS.listarId(id), ChatDTO.class);
+        return dto;
+    }
 
 }
