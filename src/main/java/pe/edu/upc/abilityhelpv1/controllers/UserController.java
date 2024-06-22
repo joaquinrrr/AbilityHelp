@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/User")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class UserController {
     @Autowired
     private IUserServices sS;

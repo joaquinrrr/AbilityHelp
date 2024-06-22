@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Degree")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class DegreeController {
     @Autowired
     private IDegreeServices sS;

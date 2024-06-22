@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Schedule")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class    ScheduleController {
     @Autowired
     private IScheduleServices sS;

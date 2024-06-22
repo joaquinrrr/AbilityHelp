@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Personalities")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class PersonalitiesController {
     @Autowired
     private IPersonalityServices sS;

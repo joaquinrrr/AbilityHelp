@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/gender")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class GenderController {
     @Autowired
     private IGenderServices sS;

@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Interaction")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class InteractionController {
     @Autowired
     private IInteractionServices iS;

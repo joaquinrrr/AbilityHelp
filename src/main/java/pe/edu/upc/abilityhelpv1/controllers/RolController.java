@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Rol")
+@CrossOrigin(origins = "https://ab13-98315.web.app")
 public class RolController {
     @Autowired
     private IRolServices sS;
