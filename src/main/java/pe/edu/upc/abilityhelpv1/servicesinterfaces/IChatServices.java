@@ -10,6 +10,4 @@ public interface IChatServices {
     public List<Chat> list();
     public void delete(int id);
     public void update(Chat chat);
-    public Chat listarId(int idChat);
-
 }
